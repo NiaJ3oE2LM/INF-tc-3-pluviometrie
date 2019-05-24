@@ -148,7 +148,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             print ('Erreur nom')
             self.send_error(404)    # Région non trouvée -> erreur 404
             return None
-    
+    print(regions)
     # configuration du tracé
     fig1 = plt.figure(figsize=(18,6))
     ax = fig1.add_subplot(111)
@@ -172,16 +172,16 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         y = [float(a[7]) for a in r if not a[7] == '']
         # tracé de la courbe
         plt.plot(x,y,linewidth=1, linestyle='-', marker='o', color=l[1], label=l[0])
+        print(l)
         
     # légendes
     plt.legend(loc='lower left')
     plt.title('Régularité des TER (en %)',fontsize=16)
 
     # génération des courbes dans un fichier PNG
-    fichier = 'courbes/ponctualite_'+self.path_info[1] +'.png'
-    plt.savefig('client/{}'.format(fichier))
+    fichier = 'ponctualite_'+self.path_info[1] +'.png'
+    plt.savefig('client\{}'.format(fichier))
     plt.close()
-    
     #html = '<img src="/{}?{}" alt="ponctualite {}" width="100%">'.format(fichier,self.date_time_string(),self.path)
     body = json.dumps({
             'title': 'Régularité TER '+self.path_info[1], \
