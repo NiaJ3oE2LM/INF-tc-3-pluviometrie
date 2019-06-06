@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<title> Pluviométrie du Grand Lyon </title>
+<link rel="stylesheet" href="style_css\style.css" type="text/css">
+<meta charset="utf-8">
+
+
+<h1> Pluviométrie du Grand Lyon </h1>
+
+<fieldset>
+<div>
+<label>Région : <input name="Region" id="region"></label><br>
+
+<label>Super bouton: <button type="button" id="bouton"> Afficher la courbe </button>
+</div>
+<p id="reponse"></p>
+</fieldset>
+
+
+
+<script>
+document.getElementById('bouton').addEventListener('click', envoidemande);
+
+function envoidemande(e) {
+  var xhr = new XMLHttpRequest();
+  // on récupére la région
+  var reg = document.getElementById('region').value,
+  xhr.open('GET','/ponctualite',true);  // requête avec une "query string"
+  xhr.send();
+  xhr.onload = function() {   // fonction callback
+    // récupération des données renvoyées par le serveur
+    var data = JSON.parse(this.responseText);
+    // affichage dans la zone 'reponse'
+    document.getElementById('reponse').innerHTML = 'ca devrait marcher';
+    //if (data.ind = 'reg_non_rep' == true) {
+      //document.getElementById('reponse').innerHTML = 'Région non répertoriée'
+    //}
+    //else {
+    //document.getElementById('reponse').innerHTML = 'ca devrait marcher';
+  };
+
+}
+</script>
