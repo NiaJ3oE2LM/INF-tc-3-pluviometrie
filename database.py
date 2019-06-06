@@ -64,9 +64,15 @@ def get_stations():
 
 
 
-def get_parametre():
-    """return la valeur du parametre cherche dans le tableau stations"""
-    pass
+def get_info_station(station):
+    """
+    return un dictionnaire du type {"info_cle":"info_value"}
+    pour une station donnée. info_cle suit la nomenclature du sujet
+    """
+    query = "SELECT * FROM info_stations WHERE nom = '{}'".format(str(station))
+    c.execute(query)
+    noms = [x[0] for x in c.fetchall()]
+
 
 
 if __name__ == '__main__':
