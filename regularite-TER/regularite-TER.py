@@ -12,7 +12,6 @@ import matplotlib.dates as pltd
 
 import sqlite3
 
-PORT = 8000
 #
 # Définition du nouveau handler
 #
@@ -217,6 +216,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 #
 # Instanciation et lancement du serveur
 #
-httpd = socketserver.TCPServer(("", PORT), RequestHandler)
+httpd = socketserver.TCPServer(("", 8080), RequestHandler)
 httpd.serve_forever()
 
