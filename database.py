@@ -79,8 +79,12 @@ def get_allinfo_station(station):
     """
     query = "SELECT * FROM info_stations  WHERE nom = '{}'".format(str(station))
     c.execute(query)
-    return [x for x in c.fetchone()]
-
+    info = [x for x in c.fetchone()]
+    # remove le nom
+    info.pop(0)
+    # create le dictionnaire
+    keys = ['adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid']
+    return dict((keys[i],info[i]) for i in range(8))
 
 
 if __name__ == '__main__':
