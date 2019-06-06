@@ -2,17 +2,21 @@
 fonctions pour répérer les données dans le database et les utiliser
 dans le serveur
 """
+import sqlite3
+
+# connection globale a la base de donnees
+conn = sqlite3.connect('data/pluvio.sqlite')
+c = conn.cursor()
 
 
 def send_ponctualite(self, regionID):
-    """plot le taux de regularité en fonction de la region"""
+    """encore à completer"""
     import matplotlib.pyplot as plt
     import matplotlib.ticker as ticker
 
     query = "SELECT  Tauxderégularité FROM 'regularite-mensuelle-ter' \
 	            WHERE ID='TER_{}' ".format(regionID)
-    conn = sqlite3.connect('ter.sqlite')
-    c = conn.cursor()
+
     c.execute(query)
     r_all = c.fetchall()
     r = []
@@ -42,7 +46,28 @@ def send_ponctualite(self, regionID):
     })
 
 
-def get_position()
+def get_stations():
+    """
+    return disctionnaire du type {"nom-station":(pos_x,pos_y)}
+    avec toutes stations du database
+    """
+    # get les noms des stations
+    query = "SELECT  nom FROM 'stations'"
+    c.execute(query)
+    noms = [x[0] for x in c.fetchall()]
+    # get la position de chaque station
+    query = "SELECT  x,y FROM 'stations'"
+    c.execute(query)
+    poss = [(float(pos[0]), float(pos[1])) for pos in c.fetchall()]
+    # build le dictionnaire
+    return dict((n,pos) for n in noms for pos in poss)
+
+
+
+def get_parametre():
+    """return la valeur du parametre cherche dans le tableau stations"""
     pass
 
-def get_
+
+if __name__ == '__main__':
+    get_stations()
