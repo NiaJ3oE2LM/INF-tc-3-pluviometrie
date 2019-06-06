@@ -8,6 +8,14 @@ import sqlite3
 conn = sqlite3.connect('data/pluvio.sqlite')
 c = conn.cursor()
 
+# creation d'une vue pour
+"""
+CREATE VIEW info_stations
+AS
+    SELECT nom, adresse, proprietai, datemisens, datemishor, zsol,  appartenan, identifian, gid
+    FROM stations;
+"""
+
 
 def send_ponctualite(self, regionID):
     """encore à completer"""
@@ -64,16 +72,20 @@ def get_stations():
 
 
 
-def get_info_station(station):
+def get_allinfo_station(station):
     """
     return un dictionnaire du type {"info_cle":"info_value"}
     pour une station donnée. info_cle suit la nomenclature du sujet
     """
-    query = "SELECT * FROM info_stations WHERE nom = '{}'".format(str(station))
+    query = "SELECT * FROM info_stations  WHERE nom = '{}'".format(str(station))
     c.execute(query)
-    noms = [x[0] for x in c.fetchall()]
-
+    info = [x for x in c.fetchone()]
+    # remove le nom
+    info.pop(0)
+    # create le dictionnaire
+    keys = ['adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid']
+    return dict((keys[i],info[i]) for i in range(8))
 
 
 if __name__ == '__main__':
-    get_stations()
+    print(get_allinfo_station('LIMONEST'))
