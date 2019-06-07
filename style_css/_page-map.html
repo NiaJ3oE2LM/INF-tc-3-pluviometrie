@@ -185,8 +185,9 @@ $.getScript("js/map_02_modif.js");
 <section class="section ldp">
 
 <div>
-  <FORM> Identifiant de la station à consulter (maintenir ctrl pour sélectionner plusieurs stations simultanément) :
-    <select name="id_station" size="4" multiple>
+  <h2> Choix des paramètres </h2>
+  <FORM> Identifiant des stations à consulter : (maintenir ctrl pour sélectionner plusieurs stations simultanément)
+    <select name="id_station" size="2" multiple>
       <option value="1"> 1  </option>
       <option value="2"> 2  </option>
       <option value="3"> 3  </option>
@@ -218,31 +219,21 @@ $.getScript("js/map_02_modif.js");
       <option value="31"> 31  </option>
       <option value="32"> 32  </option>
       <option value="33"> 37  </option>
-    </select>
-    
+    </select><br>
+
+    <label>Date de début : <input type="date" name="datebegin"><br>
+
+    <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
+
+    <label>Date de fin : <input type="date" name="dateend"><br>
+
+    <input type="submit"  value="Afficher les statistiques">
+
   </FORM>
-  <input type="submit"  value="Ajouter la station">
 </div>
 
-
-<br>
-<FORM> Date de début :
-  <input type="date" name="datebegin">
-</FORM>
-<br>
-<FORM>
-  <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
-</FORM>
-<br>
-<FORM> Date de fin :
-  <input type="date" name="dateend">
-</FORM>
-
-<br>
-<div>
-  <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
-</div>
-
+<h2> Statistiques </h2>
+  <img src="paladin.jpg" border="0" align="center" width=60%></img>
 </section>
 
   <footer class="footer primary-footer">
