@@ -2,31 +2,26 @@
     MAP -->
     =============================================== */
     function load_data () {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {   // fonction callback
-          // récupération des données renvoyées par le serveur
-        var data = JSON.parse(this.responseText);
-          // boucle sur les enregistrements renvoyés
-          for ( n = 0; n < data.length; n++ ) {
-            // insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic'
-          L.marker([data[n].lat,data[n].lon]).addTo(map)
-              .bindPopup(data[n].nom)
-          .addEventListener('click',OnMarkerClick)
-          .idreg=data[n].nom;   // propriété personnalisée ajouté au marqueur
-          }
-        };
-        xhr.open('GET','/regions',true);
-        xhr.send();
-    }
-    (function($) {
+      var xhr = new XMLHttpRequest();
+      xhr.onload = function() {   // fonction callback
+        // récupération des données renvoyées par le serveur
+  	  var data = JSON.parse(this.responseText);
+        // boucle sur les enregistrements renvoyés
+        var locations=[];
+        for ( n = 0; n < data.length; n++ ) {
+          // insertion d'un marqueur à la position, attachement d'une popup, capture de l'évènement "clic'
+          locations.push([data[n]])
+  	    L.marker([data[n].lat,data[n].lon])
+            .bindPopup(data[n].nom)
+  		  .addEventListener('click',OnMarkerClick)
+  		  .idreg=data[n].nom;   // propriété personnalisée ajouté au marqueur
+  	    }
+      };
+      xhr.open('GET','/regions',true);
+      xhr.send();
+      //construction de la carte
         "use strict";
-        var locations=[ ['<div class="infobox"><h3 class="title"><a href="#">Lyon 1</a></h3><span>blabla</span><span>blabla2</span></div>',
-        45+45/60+35/3600,
-        4+50/60+32/3600,
-        0],['<div class="infobox"><h3 class="title"><a href="#">Lyon 2</a></h3><span>fre</span><span>zer</span></div>',
-        45+45/60+36/3600,
-        4+50/60+33/3600,
-        0]];
+
         var map=new google.maps.Map(document.getElementById('map'), {
             zoom: 12, scrollwheel: false, navigationControl: true, mapTypeControl: false, scaleControl: false, draggable: true, styles: [
     {
