@@ -1,0 +1,256 @@
+<!doctype html>
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js " lang="fr"> <!--<![endif]-->
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Site Meta -->
+    <title>SEOTime HTML5 Business Template</title>
+    <meta name="keywords" content="pluviom&eacute;trie","Lyon">
+    <meta name="description" content="Pluviom&eacute;trie du Grand Lyon">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+	<!-- Google Fonts -->
+ 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700" rel="stylesheet">
+
+	<!-- Custom & Default Styles -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="style.css">
+
+	<!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.min.js"></script>
+		<script src="js/vendor/respond.min.js"></script>
+	<![endif]-->
+<script>
+$.getScript("js/map_02_modif.js");
+</script>
+<body onload="load_data()">
+</head>
+<body>
+
+	<div id="wrapper">
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 hidden-xs">
+                        <nav class="topbar-menu">
+                            <ul class="list-inline">
+                            	<li>Suivez-nous ! : </li>
+                                <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/messages/t/2196438403776098"><i class="fa fa-facebook"></i></a></li>
+                                                            </ul><!-- end list -->
+                        </nav><!-- end menu -->
+                    </div><!-- end col -->
+
+                    <div class="col-md-6 col-sm-6">
+                        <nav class="topbar-menu">
+                            <ul class="list-inline text-right navbar-right">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="images/FR.png" alt=""> Fran&#231;ais
+                                    <span class="fa fa-angle-down"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><img src="images/GB.png" alt=""> English</a></li>
+                                        <li><a href="#"><img src="images/ES.png" alt=""> Espa&#241;ol</a></li>
+                                        <li><a href="#"><img src="images/IT.png" alt=""> Italiano</a></li>
+                                        <li><a href="#"><img src="images/DE.png" alt=""> Deustch</a></li>
+                                    </ul>
+                                </li>
+                                <li class="hidden-xs"><i class="fa fa-clock-o"></i> 24/24</li>
+                                <li><i class="fa fa-phone"></i> +33 4 72 18 60 00</li>
+                            </ul><!-- end list -->
+                        </nav><!-- end menu -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end topbar -->
+
+		<header class="header site-header">
+			<div class="container">
+				<nav class="navbar navbar-default yamm">
+				    <div class="container-fluid">
+				        <div class="navbar-header">
+				            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				                <span class="sr-only">Toggle navigation</span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				            </button>
+							<a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+				        </div>
+    <!--pour le menu c'est en-dessous-->
+				        <!-- <div id="navbar" class="navbar-collapse collapse">
+				            <ul class="nav navbar-nav navbar-right">
+				                <li class=""><a href="index.html">Home</a></li>
+				                <li class="dropdown yamm-fw hasmenu">
+				                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a>
+						            <ul class="dropdown-menu">
+						                <li>
+						                    <div class="yamm-content">
+							                    <div class="row">
+							                    	<div class="col-md-4">
+														<ul>
+							                    			<li><a href="service-01.html">SEO Consultants</a></li>
+							                    			<li><a href="service-02.html">SEO Audits</a></li>
+							                    			<li><a href="service-03.html">SEO Packages & Plans</a></li>
+							                    			<li><a href="service-04.html">Web Copywriting</a></li>
+							                    			<li><a href="service-05.html">SEO Copywriting</a></li>
+							                    			<li><a href="service-06.html">Keyword Research</a></li>
+							                    			<li><a href="service-07.html">SEO Strategy</a></li>
+							                    			<li><a href="service-08.html">Website Design</a></li>
+							                    			<li><a href="service-09.html">Link Building Services</a></li>
+							                    		</ul>
+							                    	</div>
+							                    	<div class="col-md-4">
+														<ul>
+							                    			<li><a href="page-services.html">All Services</a></li>
+							                    			<li><a href="page-pricing.html">Pricing & Plans</a></li>
+							                    			<li><a href="page-clients.html">Our Clients</a></li>
+							                    			<li><a href="page-testimonials.html">Testimonials</a></li>
+							                    			<li><a href="page-ebooks.html">Free E-Books</a></li>
+							                    			<li><a href="page-seo-analysis.html">SEO Analysis</a></li>
+							                    			<li><a href="case-studies.html">Case Studies</a></li>
+							                    			<li><a href="case-studies-alt.html">Case Studies Alt</a></li>
+							                    			<li><a href="case-studies-single.html">Case Studies Single</a></li>
+							                    		</ul>
+							                    	</div>
+							                    	<div class="col-md-4">
+														<ul>
+							                    			<li><a href="blog.html">Blog & News</a></li>
+							                    			<li><a href="blog-alt.html">Blog Alternative</a></li>
+							                    			<li><a href="blog-single.html">Single Blog</a></li>
+							                    			<li><a href="page.html">Default Page</a></li>
+							                    			<li><a href="page-fullwidth.html">Fullwidth Page</a></li>
+							                    			<li><a href="page-contact.html">Contact us</a></li>
+							                    			<li><a href="page-contact-alt.html">Contact Alternative</a></li>
+							                    			<li><a href="page-faqs.html">FAQ's Page</a></li>
+							                    			<li><a href="page-not-found.html">404 Not Found</a></li>
+							                    		</ul>
+							                    	</div>
+							                    </div>
+						                    </div>
+						                </li>
+						            </ul>
+				                </li>
+				                <li><a href="page-about.html">What is SEO?</a></li>
+				                <li><a href="case-studies.html">Case Studies</a></li>
+				                <li><a href="blog.html">Blog</a></li>
+				                <li class="active"><a href="page-contact.html">Contact</a></li>
+                                <li class="lastlink hidden-xs hidden-sm"><a href="page-seo-analysis.html"><i class="glyphicon glyphicon-search"></i> free seo analysis</a></li>
+                            </ul> -->
+				        </div><!--/.nav-collapse -->
+				    </div><!--/.container-fluid -->
+				</nav><!-- end nav -->
+			</div><!-- end container -->
+		</header><!-- end header -->
+
+		<section class="section normalhead">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+						<h2>Bienvenue !</h2>
+						<p class="lead">Le seul site sur lequel vous pouvez trouver TOUTES les données de pluviométrie sur le Grand Lyon !</p>
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end container -->
+		</section><!-- end section -->
+<!--section avec les petits logos jolis-->
+
+
+				<div class="row">
+					<div class="col-md-12 mb30">
+						<div class="mapv2">
+						<div id="map"></div>
+						</div>
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end container -->
+		</section><!-- end section -->
+<!-- on peut rajouter des images en-dessous, au dessus du footer, voir dans le html original-->
+
+<div id="reponse">
+  <p align="center"></p>
+  <img width="70%" src="" />
+</div>
+<section class="section ldp">
+<div style="float:left;width=70%;">
+<div>
+  <label> <button type="button" id="bouton_ajout_station"> Ajouter la station </button>
+  <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
+</div>
+
+
+
+<!-- <div style="float:left;width=30%;"> -->
+
+<FORM> Date de début :
+  <input type="date" name="datebegin">
+</FORM>
+
+<FORM>
+  <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
+</FORM>
+
+<FORM> Date de fin :
+  <input type="date" name="dateend">
+</FORM>
+</div>
+</section>
+
+  <footer class="footer primary-footer">
+    <div class="container">
+      <div class="row contactv2 text-center">
+        <div class="col-md-4">
+          <div class="small-box">
+            <i class="flaticon-message"></i>
+            <h4>Nous contacter</h4>
+            <small>Téléphone: +33 4 72 18 60 00</small>
+            <small>Fax:  +33 4 72 18 60 00</small>
+            <p><a href="mail:to">michele.schio@ecl18.ec-lyon.fr</a></p>
+          </div><!-- end small-box -->
+        </div><!-- end col -->
+
+        <div class="col-md-4">
+          <div class="small-box">
+            <i class="flaticon-home-marker"></i>
+            <h4>D'où sommes-nous ?</h4>
+            <h5>Ecole Centrale de Lyon</h5>
+            <small>36 avenue Guy de Collongue</small>
+            <small>69130 Ecully, France</small>
+            <p><a target="_blank" rel="noopener noreferrer" href="https://www.google.fr/maps/place/36+Avenue+Guy+de+Collongue,+69130+%C3%89cully/@45.7827328,4.767355,14z/data=!4m5!3m4!1s0x47f4ec94dd22ae37:0xda95420287666608!8m2!3d45.7827291!4d4.7695437?hl=fr">C'est où ?</a></p>
+          </div><!-- end small-box -->
+        </div><!-- end col -->
+
+        <div class="col-md-4">
+          <div class="small-box">
+            <i class="flaticon-user"></i>
+            <h4>Sur les réseaux sociaux</h4>
+            <small>Twitter : on n'en a pas</small>
+            <p><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/messages/t/2196438403776098">Messenger</a></p>
+          </div><!-- end small-box -->
+        </div><!-- end col -->
+      </div><!-- end contactv2 -->
+    </div>
+</footer>
+	<!-- jQuery Files -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/parallax.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAkADq7R0xf6ami9YirAM1N-yl7hdnYBhM "></script>
+   <!-- MAP & CONTACT -->
+    <script src="js/map_02_modif.js"></script>
+
+</body>
+</html>
