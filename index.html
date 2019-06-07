@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <title> Pluviométrie du Grand Lyon </title>
 <link rel="stylesheet" type="text/css" href="leaflet.css" />
-<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="style_css\style.css" type="text/css">
 <meta charset="utf-8">
 
 
@@ -65,21 +65,41 @@
       xhr.open('GET','/ponctualite/'+e.target.idreg,true);  // on récupère la courbe par un appel au serveur
       xhr.send();
   }
+
+  function OnAjoutStationClick (e) {
+
+  }
+
+  function OnAffichageClick (e) {
+
+  }
+
   </script>
 
   <div>
   <label> <button type="button" id="bouton_ajout_station"> Ajouter la station </button>
   <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
   </div>
+
   </div>
 
 
 
   <div style="float:left;width:75%;">
+
     <div>
-    <label> <button type="button" id="bouton_ajout_station"> Ajouter la station </button>
-    <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
+      <FORM>
+        <input type="date" name="datebegin">
+
+      </FORM>
+      <FORM>
+        <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
+      </FORM>
+      <FORM>
+        <input type="date" name="dateend">
+      </FORM>
     </div>
+
   </div>
   <p id="reponse"></p>
   </fieldset>
