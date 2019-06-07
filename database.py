@@ -72,21 +72,18 @@ def get_stations():
 
 
 
-def get_allinfo_station(station):
+def get_allinfo_station(id_station):
     """
     return un dictionnaire du type {"info_cle":"info_value"}
-    pour une station donnée. info_cle suit la nomenclature du sujet
+    pour un id_station donné. info_cle suit la nomenclature du sujet
     """
-    query = "SELECT * FROM info_stations  WHERE nom = '{}'".format(str(station))
+    query = "SELECT * FROM info_stations  WHERE identifian = '{}'".format(int(id_station))
     c.execute(query)
     info = [x for x in c.fetchone()]
-    # remove le nom
-    info.pop(0)
-    # create le dictionnaire
-    keys = ['adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid']
+    keys = ['nom','adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid']
     return dict((keys[i],info[i]) for i in range(8))
 
 
 if __name__ == '__main__':
-    print(get_stations())
-    #print(get_allinfo_station('LIMONEST'))
+    #print(get_stations())
+    print(get_allinfo_station(23))
