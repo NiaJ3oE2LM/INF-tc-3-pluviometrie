@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Site Meta -->
-    <title>Pluviom&eacute;trie</title>
+    <title>SEOTime HTML5 Business Template</title>
     <meta name="keywords" content="pluviom&eacute;trie","Lyon">
     <meta name="description" content="Pluviom&eacute;trie du Grand Lyon">
     <meta name="author" content="">
@@ -183,57 +183,28 @@ $.getScript("js/map_02_modif.js");
   <img width="70%" src="" />
 </div>
 <section class="section ldp">
-
+<div style="float:left;width=70%;">
 <div>
-  <h2> Choix des paramètres </h2>
-  <FORM> Identifiant des stations à consulter : (maintenir ctrl pour sélectionner plusieurs stations simultanément)
-    <select name="id_station" size="2" multiple>
-      <option value="1"> 1  </option>
-      <option value="2"> 2  </option>
-      <option value="3"> 3  </option>
-      <option value="4"> 4  </option>
-      <option value="5"> 5  </option>
-      <option value="6"> 6  </option>
-      <option value="7"> 7  </option>
-      <option value="8"> 8  </option>
-      <option value="9"> 9  </option>
-      <option value="10"> 10  </option>
-      <option value="11"> 11  </option>
-      <option value="12"> 12  </option>
-      <option value="13"> 13  </option>
-      <option value="14"> 14  </option>
-      <option value="15"> 15  </option>
-      <option value="16"> 16  </option>
-      <option value="17"> 17  </option>
-      <option value="18"> 18  </option>
-      <option value="19"> 19  </option>
-      <option value="21"> 21  </option>
-      <option value="23"> 23  </option>
-      <option value="24"> 24  </option>
-      <option value="25"> 25  </option>
-      <option value="26"> 26  </option>
-      <option value="27"> 27  </option>
-      <option value="28"> 28  </option>
-      <option value="29"> 29  </option>
-      <option value="30"> 30  </option>
-      <option value="31"> 31  </option>
-      <option value="32"> 32  </option>
-      <option value="33"> 37  </option>
-    </select><br>
-
-    <label>Date de début : <input type="date" name="datebegin"><br>
-
-    <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
-
-    <label>Date de fin : <input type="date" name="dateend"><br>
-
-    <input type="submit"  value="Afficher les statistiques">
-
-  </FORM>
+  <label> <button type="button" id="bouton_ajout_station"> Ajouter la station </button>
+  <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
 </div>
 
-<h2> Statistiques </h2>
-  <img src="paladin.jpg" border="0" align="center" width=60%></img>
+
+
+<!-- <div style="float:left;width=30%;"> -->
+
+<FORM> Date de début :
+  <input type="date" name="datebegin">
+</FORM>
+
+<FORM>
+  <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
+</FORM>
+
+<FORM> Date de fin :
+  <input type="date" name="dateend">
+</FORM>
+</div>
 </section>
 
   <footer class="footer primary-footer">
@@ -279,7 +250,7 @@ $.getScript("js/map_02_modif.js");
 	<script src="js/custom.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAkADq7R0xf6ami9YirAM1N-yl7hdnYBhM "></script>
    <!-- MAP & CONTACT -->
-    <script src="js/map_02.js"></script>
+    <script src="js/map_02_modif.js"></script>
 
 </body>
 </html>
