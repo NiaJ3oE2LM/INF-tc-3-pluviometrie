@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<title> Pluviométrie du Grand Lyon </title>
-<link rel="stylesheet" type="text/css" href="leaflet.css" />
-<link rel="stylesheet" href="style_css\style.css" type="text/css">
-<meta charset="utf-8">
 
+<script src="leaflet.js"> // insertion bibliothèque Leaflet : http://leafletjs.com/ </script>
+
+<title>Pluviométrie du Grand Lyon</title>
+<link rel="stylesheet" type="text/css" href="leaflet.css" />
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+<meta charset="utf-8">
 
 <style>
 #map { height: 400px; width: 400px; float:left; margin-left:20px; margin-right:20px;}
@@ -11,20 +14,20 @@
 
 <body onload="load_data()">  <!-- Récupération des données avec le chargement de la page -->
 
+<h1>Pluviométrie du Grand Lyon</h1>
 
-<h1> Pluviométrie du Grand Lyon </h1>
+ <!-- <label><span>Région :</span><input id="region" name="Region">
+ <button id="bouton">Afficher la courbe</button>  </label>  -->
+<div style="float:left;width=70%;">
+  <div id="map"></div>
 
-<fieldset>
-  <div style="float:left;width:25%;">
-    <div id="map"></div>
-
-   <div id="reponse">
-     <p align="center"></p>
-     <img width="70%" src="" />
-   </div>
-   <div>
-   </div>
-   </body>
+  <div id="reponse">
+    <p align="center"></p>
+    <img width="70%" src="" />
+  </div>
+  <div>
+  </div>
+  </body>
 
   <script>
   // Creation d'une carte dans la balise div "map", et positionne la vue sur un point donné et un niveau de zoom
@@ -65,41 +68,26 @@
       xhr.open('GET','/ponctualite/'+e.target.idreg,true);  // on récupère la courbe par un appel au serveur
       xhr.send();
   }
-
-  function OnAjoutStationClick (e) {
-
-  }
-
-  function OnAffichageClick (e) {
-
-  }
-
   </script>
 
   <div>
-  <label> <button type="button" id="bouton_ajout_station"> Ajouter la station </button>
-  <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
+    <label> <button type="button" id="bouton_ajout_station"> Ajouter la station </button>
+    <label> <button type="button" id="bouton_affichage"> Affichage des statistiques </button>
   </div>
 
-  </div>
 
+</div>
+<div style="float:left;width=30%;">
 
+  <FORM> Date de début :
+    <input type="date" name="datebegin">
+  </FORM>
 
-  <div style="float:left;width:75%;">
+  <FORM>
+    <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
+  </FORM>
 
-    <div>
-      <FORM>
-        <input type="date" name="datebegin">
-
-      </FORM>
-      <FORM>
-        <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
-      </FORM>
-      <FORM>
-        <input type="date" name="dateend">
-      </FORM>
-    </div>
-
-  </div>
-  <p id="reponse"></p>
-  </fieldset>
+  <FORM> Date de fin :
+    <input type="date" name="dateend">
+  </FORM>
+</div>
