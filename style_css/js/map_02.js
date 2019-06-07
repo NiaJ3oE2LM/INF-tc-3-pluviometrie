@@ -3,10 +3,13 @@
     =============================================== */
     (function($) {
         "use strict";
-        var locations=[ ['<div class="infobox"><h3 class="title"><a href="#">OUR USA OFFICE</a></h3><span>NEW YORK CITY 2045 / 65</span><span>+90 555 666 77 88</span></div>',
-        52.370216,
-        4.895168,
-        2]];
+        var locations=[ ['<div class="infobox"><h3 class="title"><a href="#">Lyon 1</a></h3><span>blabla</span><span>blabla2</span></div>',
+        45+45/60+35/3600,
+        4+50/60+32/3600,
+        0],['<div class="infobox"><h3 class="title"><a href="#">Lyon 2</a></h3><span>fre</span><span>zer</span></div>',
+        45+45/60+36/3600,
+        4+50/60+33/3600,
+        0]];
         var map=new google.maps.Map(document.getElementById('map'), {
             zoom: 12, scrollwheel: false, navigationControl: true, mapTypeControl: false, scaleControl: false, draggable: true, styles: [
     {
@@ -87,9 +90,9 @@
             }
         ]
     }
-], center: new google.maps.LatLng(52.370216, 4.895168), mapTypeId: google.maps.MapTypeId.ROADMAP
+], center: new google.maps.LatLng(45+45/60,4+50/60), mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-        
+
         );
         var infowindow=new google.maps.InfoWindow();
         var marker,
