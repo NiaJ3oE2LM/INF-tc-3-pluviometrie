@@ -56,19 +56,19 @@ def send_ponctualite(self, regionID):
 
 def get_stations():
     """
-    return disctionnaire du type {"nom-station":(pos_x,pos_y)}
+    return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
     avec toutes stations du database
     """
     # get les noms des stations
-    query = "SELECT  nom FROM 'stations'"
+    query = "SELECT identifian FROM 'stations'"
     c.execute(query)
-    noms = [x[0] for x in c.fetchall()]
+    ids = [x[0] for x in c.fetchall()]
     # get la position de chaque station
-    query = "SELECT  x,y FROM 'stations'"
+    query = "SELECT  nom,x,y FROM 'stations'"
     c.execute(query)
-    poss = [(float(pos[0]), float(pos[1])) for pos in c.fetchall()]
+    poss = [(pos[0],float(pos[1]), float(pos[2])) for pos in c.fetchall()]
     # build le dictionnaire
-    return dict((n,pos) for n in noms for pos in poss)
+    return dict((id,pos) for id in ids for pos in poss)
 
 
 
@@ -88,4 +88,5 @@ def get_allinfo_station(station):
 
 
 if __name__ == '__main__':
-    print(get_allinfo_station('LIMONEST'))
+    print(get_stations())
+    #print(get_allinfo_station('LIMONEST'))
