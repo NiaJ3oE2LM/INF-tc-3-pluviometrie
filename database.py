@@ -8,50 +8,21 @@ import sqlite3
 conn = sqlite3.connect('data/pluvio.sqlite')
 c = conn.cursor()
 
-# creation d'une vue pour
-"""
+
+""" creation d'une vue pour
 CREATE VIEW info_stations
 AS
     SELECT nom, adresse, proprietai, datemisens, datemishor, zsol,  appartenan, identifian, gid
     FROM stations;
 """
 
+""" decoupage date et valeur non vides
+select substr(`date`,1,2), substr(`date`,4,2), substr(`date`,7,4), substr(`date`,12),`sta-1` from historique where `sta-1` != '' 
+"""
 
-def send_ponctualite(self, regionID):
-    """encore à completer"""
-    import matplotlib.pyplot as plt
-    import matplotlib.ticker as ticker
-
-    query = "SELECT  Tauxderégularité FROM 'regularite-mensuelle-ter' \
-	            WHERE ID='TER_{}' ".format(regionID)
-
-    c.execute(query)
-    r_all = c.fetchall()
-    r = []
-    if r_all:
-        [r.append(float(x[0])) for x in r_all]
-    # create the figure
-    fig, ax = plt.subplots()
-    fig.suptitle('TER_{}'.format(regionID))
-    ax.set_xlabel("mois")
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(10))
-    # ax.xaxis.set_minor_locator(ticker.MultipleLocator(1))
-    ax.set_ylabel('Taux de régularité')
-    ax.plot(r, '*-')
-    plot_name = 'courbes/ter_{}.svg'.format(regionID)
-    # save the fig
-    self.path = self.static_dir + plot_name
-    fig.savefig(self.path)
-    # get the region name
-    query = "SELECT DISTINCT Région FROM 'regularite-mensuelle-ter'\
-                  where ID = 'TER_{}' ".format(regionID)
-    c.execute(query)
-    regionName = c.fetchone()[0]
-    # send the plot path on the server
-    self.send_json({
-        'title': "regularite {} (TER-{})".format(regionName, regionID),
-        'img': plot_name
-    })
+""" exemple recherche
+select date, `sta-1` from historique where substr(`date`,7,4)='2012' and `sta-1`!=''
+"""
 
 
 def get_stations():
@@ -71,7 +42,6 @@ def get_stations():
     return dict((id,pos) for id in ids for pos in poss)
 
 
-
 def get_allinfo_station(id_station):
     """
     return un dictionnaire du type {"info_cle":"info_value"}
@@ -84,6 +54,19 @@ def get_allinfo_station(id_station):
     return dict((keys[i],info[i]) for i in range(8))
 
 
+def get_historique(id_station, an_debut, an_fin):
+    """
+    rende l'historique d'un station la choisissant par son identifiant
+    l'historique est limitee par la date de debut et la date de fin
+    :return: liste des valeus de l'historique
+    """
+    query = "select `date`, `sta-{0}` from `historique` "\
+        "where `sta-{0}`!='' "\
+        "and substr(`date`,7,4)>='{1}'"\
+        "and substr(`date`,7,4)<='{2}'".format(id_station, an_debut, an_fin)
+    c.execute(query)
+    return c.fetchall()
+
+
 if __name__ == '__main__':
-    #print(get_stations())
-    print(get_allinfo_station(23))
+    print(get_historique(1,2012,2013))
