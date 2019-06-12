@@ -85,7 +85,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         poss = [(pos[0],float(pos[1]), float(pos[2])) for pos in c.fetchall()]
         # build le dictionnaire
         #d=dict((id,pos) for id in ids for pos in poss)
-        d=[("coucou",45+45/60,4+50/60),("coucou2",45+47/60,4+55/60)]
+        d=[{'nom':'a','lat':45+45/60,'lon':4+50/60},{'nom':'b','lat':45+48/60,'lon':4+53/60}]
         s=json.dumps(d)
         headers=[('Content-type','application/json')]
         self.send(s,headers)

@@ -1,25 +1,26 @@
     /* ==============================================
     MAP -->
     =============================================== */
-    var locations=[] //variable globale
     function load_data () {
+      var locations=[];
       var xhr = new XMLHttpRequest();
+      xhr.open('GET','/pluvio',true);
+      xhr.send();
       xhr.onload = function() {   // fonction callback
         // récupération des données renvoyées par le serveur
   	  var data = JSON.parse(this.responseText);
-      alert('data_'+String(data))
         // boucle sur les enregistrements renvoyés
         for ( id = 0; id < data.length; id++ ) {
           // liste des positions à marquer [nom,long,lat]
-          locations.push([['<div class="infobox"><h3 class="title">'+String(data[id][0])+'</h3></div>',data[id][1],data[id][2]]])
-  	    }
+          locations.push(['<div class="infobox"><h3 class="title">'+String(data[id].nom)+'</h3></div>',data[id].lat,data[id].lon])
+  	    }//locations=[[nom,lat,long],[],...]
       };
-      xhr.open('GET','/pluvio',true);
-      xhr.send();
-    }
-      //construction de la carte
-      (function($) {
+      return locations
+     }
+    //   //construction de la carte
+       (function($) {
         "use strict";
+        var locations=load_data();
         var map=new google.maps.Map(document.getElementById('map'), {
             zoom: 12, scrollwheel: false, navigationControl: true, mapTypeControl: false, scaleControl: false, draggable: true, styles: [
     {
@@ -104,28 +105,31 @@
         }
 
         );
-        alert(String(locations.length))
+        alert('loc '+String(locations))
         var infowindow=new google.maps.InfoWindow();
+        var lat;
+        var long;
         var marker,
         i;
-        for (i=0;
+        for (var i=0;
         i < locations.length;
         i++) {
-          alert(Srting(i))
+          lat=locations[i][1];
+          long=locations[i][2];
             marker=new google.maps.Marker( {
-                position: new google.maps.LatLng(locations[i,1], locations[i,2]), map: map, icon: 'images/apple-touch-icon.png'
+                position: new google.maps.LatLng(lat,long), map: map, icon: 'images/apple-touch-icon.png'
             }
             );
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
-                    infowindow.setContent(locations[i,0]);
+                    infowindow.setContent(locations[i][0]);
                     infowindow.open(map, marker);
             //google.maps.event.addListener(marker, 'click',OnMarkerClick).idreg=id;
-            alert('fin')
 
 
                 }
             }
+
             )(marker, i));
         }
     })(jQuery);
