@@ -5,15 +5,17 @@
     (function($) {
       var locations=[];
       var xhr = new XMLHttpRequest();
+      var nom='r';
       xhr.open('GET','/pluvio',true);
       xhr.send();
       xhr.onload = function() {   // fonction callback
         // récupération des données renvoyées par le serveur
   	  var data = JSON.parse(this.responseText);
         // boucle sur les enregistrements renvoyés
-        for ( id = 0; id < data.length; id++ ) {
+        for ( i = 0; i < data.length; i++ ) {
+          nom=data[i].nom;
           // liste des positions à marquer [nom,long,lat]
-          locations.push(['<div class="infobox"><h3 class="title"><a href="#">'+String(data[id].nom)+'</a></h3><span>blabla</span><span>blabla2</span>',data[id].lat,data[id].lon])
+          locations.push(['<div class="infobox"><h3 class="title"><a href="#">'+nom+'</a></h3><span>blabla</span><span>blabla2</span>',data[i].lat,data[i].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
       setTimeout(function(){map(locations);},1000);
@@ -111,10 +113,9 @@
         var text;
         var marker,
         i;
-        for (var i=0;
+        for ( i=0;
         i < locations.length;
         i++) {
-          text=locations[i][0];
           lat=locations[i][1];
           long=locations[i][2];
             marker=new google.maps.Marker( {
@@ -123,7 +124,7 @@
             );
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
-                    infowindow.setContent(text);
+                    infowindow.setContent(locations[i][0]);
                     infowindow.open(map, marker);
 
 
