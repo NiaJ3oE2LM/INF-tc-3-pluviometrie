@@ -68,6 +68,8 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         print('info_path =',self.path_info)
         print('body =',length,ctype,self.body)
         print('params =', self.params)
+
+
     def get_stations(self):
         """
         return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
