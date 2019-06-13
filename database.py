@@ -33,7 +33,7 @@ def get_stations():
     # get la nom position et ids de chaque station
     query = "SELECT  nom,x,y,identifian FROM `stations`"
     c.execute(query)
-    poss = [{'nom':pos[0],
+    poss = [{'nom':format_stationName(pos[0]),
              'lat':float(pos[1]),
              'lon':float(pos[2]),
              'id':int(pos[3])
@@ -74,11 +74,17 @@ def format_stationName(name):
     :param name:
     :return:
     """
-    words = name.split()
-    for word in words:
-        
-
+    words = []
+    for w in name.split():
+        if len(w) <= 2:
+            words.append(w.lower())
+        elif len(w) > 2:
+            words.append(w[0].upper() + w[1:].lower())
+        else:
+            words.append(w)
+    return " ".join(words)
 
 if __name__ == '__main__':
     # print(get_historique(1,2012,2013))
-    print(get_stations())
+     print(get_stations())
+    # print(format_stationName("CHAMPAGNE AU MONT D OR"))
