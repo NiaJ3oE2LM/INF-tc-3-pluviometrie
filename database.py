@@ -30,7 +30,6 @@ def get_stations():
     return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
     avec toutes stations du database
     """
-
     # get la nom position et ids de chaque station
     query = "SELECT  nom,x,y,identifian FROM `stations`"
     c.execute(query)
@@ -69,8 +68,15 @@ def get_historique(id_station, an_debut, an_fin):
     return c.fetchall()
 
 
-def format_stationName(strign):
-    pass
+def format_stationName(name):
+    """
+    string in lower case all but first letter
+    :param name:
+    :return:
+    """
+    words = name.split()
+    for word in words:
+        
 
 
 if __name__ == '__main__':
