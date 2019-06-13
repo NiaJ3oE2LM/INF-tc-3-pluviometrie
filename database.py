@@ -58,7 +58,7 @@ def get_historique(id_station, an_debut, an_fin):
     """
     rende l'historique d'un station la choisissant par son identifiant
     l'historique est limitee par la date de debut et la date de fin
-    anne -affichage des courbes
+    anne - mois - jour
     :return: liste des valeus de l'historique
     """
     query = "select `date`, `sta-{0}` from `historique` "\
