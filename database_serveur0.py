@@ -70,27 +70,45 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         print('params =', self.params)
 
 
+
+
     def get_stations(self):
+        conn = sqlite3.connect('data/pluvio.sqlite')
+        c = conn.cursor()
         """
         return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
         avec toutes stations du database
         """
-        conn = sqlite3.connect('data/pluvio.sqlite')
-        c = conn.cursor()
-        # get les noms des stations
-        query = "SELECT identifian FROM 'stations'"
+        # get la nom position et ids de chaque station
+        query = "SELECT  nom,x,y,identifian FROM `stations`"
         c.execute(query)
-        ids = [x[0] for x in c.fetchall()]
-        # get la position de chaque station
-        query = "SELECT  nom,x,y FROM 'stations'"
-        c.execute(query)
-        poss = [(pos[0],float(pos[1]), float(pos[2])) for pos in c.fetchall()]
+        poss = [{'nom':format_stationName(pos[0]),
+                 'lat':float(pos[2]),
+                 'lon':float(pos[1]),
+                 'id':int(pos[3])
+        }for pos in c.fetchall()]
+        print(poss)
         # build le dictionnaire
-        #d=dict((id,pos) for id in ids for pos in poss)
-        d=[{'nom':'a','lat':45+45/60,'lon':4+50/60},{'nom':'b','lat':45+48/60,'lon':4+53/60}]
-        s=json.dumps(d)
+        s=json.dumps(poss)
         headers=[('Content-type','application/json')]
         self.send(s,headers)
+
+
+def format_stationName(name):
+    """
+    string in lower case all but first letter
+    :param name:
+    :return:
+    """
+    words = []
+    for w in name.split():
+        if len(w) <= 2:
+            words.append(w.lower())
+        elif len(w) > 2:
+            words.append(w[0].upper() + w[1:].lower())
+        else:
+            words.append(w)
+    return " ".join(words)
     
 
 httpd = socketserver.TCPServer(("", 8080),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
