@@ -65,9 +65,13 @@ def get_historique(id_station, date_debut, date_fin):
     a_deb, m_deb, j_deb = date_debut.split('-')
     a_fin, m_fin, j_fin = date_fin.split('-')
     query = "select `date`, `sta-{0}` from `historique` "\
-        "where `sta-{0}`!='' "\
-        "and substr(`date`,7,4)>='{1}'"\
-        "and substr(`date`,7,4)<='{2}'".format(id_station, a_deb, a_fin)
+        "where `sta-{0}`!='' " \
+        "and substr(`date`,1,2)>='{5}'" \
+        "and substr(`date`,1,2)<='{6}'" \
+        "and substr(`date`,4,2)>='{1}'"\
+        "and substr(`date`,4,2)<='{2}'"\
+        "and substr(`date`,7,4)>='{3}'"\
+        "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
     c.execute(query)
     # mise en forme des donnees
     x = []
@@ -77,7 +81,6 @@ def get_historique(id_station, date_debut, date_fin):
         y.append((float(p[1]), t.pop()))
         t.reverse()
         x.append(tuple(t))
-
     return x,y
 
 
@@ -98,6 +101,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-     print(get_historique(1,"2012-12-24","2013-10-13"))
+     print(get_historique(1,"2011-01-01","2011-02-02"))
     # print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
