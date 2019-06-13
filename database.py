@@ -58,6 +58,7 @@ def get_historique(id_station, an_debut, an_fin):
     """
     rende l'historique d'un station la choisissant par son identifiant
     l'historique est limitee par la date de debut et la date de fin
+    anne - mois - jour
     :return: liste des valeus de l'historique
     """
     query = "select `date`, `sta-{0}` from `historique` "\
@@ -85,6 +86,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-    # print(get_historique(1,2012,2013))
-     print(get_stations())
+    print(get_historique(1,2012,2013))
+    #print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
