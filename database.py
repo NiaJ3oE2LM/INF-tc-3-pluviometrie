@@ -30,16 +30,17 @@ def get_stations():
     return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
     avec toutes stations du database
     """
-    # get les noms des stations
-    query = "SELECT identifian FROM 'stations'"
+
+    # get la nom position et ids de chaque station
+    query = "SELECT  nom,x,y,identifian FROM `stations`"
     c.execute(query)
-    ids = [x[0] for x in c.fetchall()]
-    # get la position de chaque station
-    query = "SELECT  nom,x,y FROM 'stations'"
-    c.execute(query)
-    poss = [(pos[0],float(pos[1]), float(pos[2])) for pos in c.fetchall()]
+    poss = [{'nom':pos[0],
+             'lat':float(pos[1]),
+             'lon':float(pos[2]),
+             'id':int(pos[3])
+    }for pos in c.fetchall()]
     # build le dictionnaire
-    return dict((id,pos) for id in ids for pos in poss)
+    return poss
 
 
 def get_allinfo_station(id_station):
@@ -68,5 +69,10 @@ def get_historique(id_station, an_debut, an_fin):
     return c.fetchall()
 
 
+def format_stationName(strign):
+    pass
+
+
 if __name__ == '__main__':
-    print(get_historique(1,2012,2013))
+    # print(get_historique(1,2012,2013))
+    print(get_stations())
