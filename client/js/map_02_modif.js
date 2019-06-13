@@ -1,9 +1,9 @@
     /* ==============================================
     MAP -->
     =============================================== */
-    var locations=[]
-    function load_data () {
-      alert('load')
+
+    (function($) {
+      var locations=[];
       var xhr = new XMLHttpRequest();
       xhr.open('GET','/pluvio',true);
       xhr.send();
@@ -16,39 +16,11 @@
           locations.push(['<div class="infobox"><h3 class="title"><a href="#">'+String(data[id].nom)+'</a></h3><span>blabla</span><span>blabla2</span>',data[id].lat,data[id].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
-      var infowindow=new google.maps.InfoWindow();
-      var lat;
-      var long;
-      var text;
-      var marker,
-      i;
-      for (var i=0;
-      i < locations.length;
-      i++) {
-        alert('construction')
-        text=locations[i][0];
-        lat=locations[i][1];
-        long=locations[i][2];
-          marker=new google.maps.Marker( {
-              position: new google.maps.LatLng(lat,long), map: map, icon: 'images/apple-touch-icon.png'
-          }
-          );
-          google.maps.event.addListener(marker, 'click', (function(marker, i) {
-              return function() {
-                  infowindow.setContent(text);
-                  infowindow.open(map, marker);
-
-
-              }
-          }
-
-          )(marker, i));
-      }
-     }
+      setTimeout(function(){map(locations);},100);
+    })(jQuery);
     //   //construction de la carte
-       (function($) {
+    function map(locations) {
         "use strict";
-        alert('map')
         var map=new google.maps.Map(document.getElementById('map'), {
             zoom: 12, scrollwheel: false, navigationControl: true, mapTypeControl: false, scaleControl: false, draggable: true, styles: [
     {
@@ -133,5 +105,31 @@
         }
 
         );
-        load_data();
-      })(jQuery);
+        var infowindow=new google.maps.InfoWindow();
+        var lat;
+        var long;
+        var text;
+        var marker,
+        i;
+        for (var i=0;
+        i < locations.length;
+        i++) {
+          text=locations[i][0];
+          lat=locations[i][1];
+          long=locations[i][2];
+            marker=new google.maps.Marker( {
+                position: new google.maps.LatLng(lat,long), map: map, icon: 'images/apple-touch-icon.png'
+            }
+            );
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(text);
+                    infowindow.open(map, marker);
+
+
+                }
+            }
+
+            )(marker, i));
+        }
+    };
