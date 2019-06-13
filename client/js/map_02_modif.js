@@ -1,28 +1,49 @@
     /* ==============================================
     MAP -->
     =============================================== */
-    function load_data (i) {
+    var locations=[]
+    function load_data () {
       alert('load')
-      var locations=[];
       var xhr = new XMLHttpRequest();
-      var t=0;
-      xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-          t = xhttp.responseText;
-        }
-      }
       xhr.open('GET','/pluvio',true);
       xhr.send();
       xhr.onload = function() {   // fonction callback
         // récupération des données renvoyées par le serveur
-  	  var data = JSON.parse(t);
+  	  var data = JSON.parse(this.responseText);
         // boucle sur les enregistrements renvoyés
         for ( id = 0; id < data.length; id++ ) {
           // liste des positions à marquer [nom,long,lat]
           locations.push(['<div class="infobox"><h3 class="title"><a href="#">'+String(data[id].nom)+'</a></h3><span>blabla</span><span>blabla2</span>',data[id].lat,data[id].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
-      return locations
+      var infowindow=new google.maps.InfoWindow();
+      var lat;
+      var long;
+      var text;
+      var marker,
+      i;
+      for (var i=0;
+      i < locations.length;
+      i++) {
+        alert('construction')
+        text=locations[i][0];
+        lat=locations[i][1];
+        long=locations[i][2];
+          marker=new google.maps.Marker( {
+              position: new google.maps.LatLng(lat,long), map: map, icon: 'images/apple-touch-icon.png'
+          }
+          );
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                  infowindow.setContent(text);
+                  infowindow.open(map, marker);
+
+
+              }
+          }
+
+          )(marker, i));
+      }
      }
     //   //construction de la carte
        (function($) {
@@ -112,34 +133,5 @@
         }
 
         );
-        var locations=load_data(0);
-        alert('marche')
-        var infowindow=new google.maps.InfoWindow();
-        var lat;
-        var long;
-        var text;
-        var marker,
-        i;
-        for (var i=0;
-        i < locations.length;
-        i++) {
-          alert('construction')
-          text=locations[i][0];
-          lat=locations[i][1];
-          long=locations[i][2];
-            marker=new google.maps.Marker( {
-                position: new google.maps.LatLng(lat,long), map: map, icon: 'images/apple-touch-icon.png'
-            }
-            );
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
-                    infowindow.setContent(text);
-                    infowindow.open(map, marker);
-
-
-                }
-            }
-
-            )(marker, i));
-        }
-    })(jQuery);
+        load_data();
+      })(jQuery);
