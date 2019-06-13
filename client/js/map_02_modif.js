@@ -16,7 +16,7 @@
           locations.push(['<div class="infobox"><h3 class="title"><a href="#">'+String(data[id].nom)+'</a></h3><span>blabla</span><span>blabla2</span>',data[id].lat,data[id].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
-      setTimeout(function(){map(locations);},100);
+      setTimeout(function(){map(locations);},1000);
     })(jQuery);
     //   //construction de la carte
     function map(locations) {
