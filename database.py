@@ -30,11 +30,10 @@ def get_stations():
     return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
     avec toutes stations du database
     """
-
     # get la nom position et ids de chaque station
     query = "SELECT  nom,x,y,identifian FROM `stations`"
     c.execute(query)
-    poss = [{'nom':pos[0],
+    poss = [{'nom':format_stationName(pos[0]),
              'lat':float(pos[1]),
              'lon':float(pos[2]),
              'id':int(pos[3])
@@ -59,6 +58,7 @@ def get_historique(id_station, an_debut, an_fin):
     """
     rende l'historique d'un station la choisissant par son identifiant
     l'historique est limitee par la date de debut et la date de fin
+    anne - mois - jour
     :return: liste des valeus de l'historique
     """
     query = "select `date`, `sta-{0}` from `historique` "\
@@ -69,10 +69,23 @@ def get_historique(id_station, an_debut, an_fin):
     return c.fetchall()
 
 
-def format_stationName(strign):
-    pass
-
+def format_stationName(name):
+    """
+    string in lower case all but first letter
+    :param name:
+    :return:
+    """
+    words = []
+    for w in name.split():
+        if len(w) <= 2:
+            words.append(w.lower())
+        elif len(w) > 2:
+            words.append(w[0].upper() + w[1:].lower())
+        else:
+            words.append(w)
+    return " ".join(words)
 
 if __name__ == '__main__':
-    # print(get_historique(1,2012,2013))
-    print(get_stations())
+    print(get_historique(1,2012,2013))
+    #print(get_stations())
+    # print(format_stationName("CHAMPAGNE AU MONT D OR"))

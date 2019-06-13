@@ -180,6 +180,7 @@
 
 <div>
   <h2> Choix des paramètres </h2>
+
   <FORM> Identifiant des stations à consulter : (maintenir ctrl pour sélectionner plusieurs stations simultanément)
     <select name="id_station" size="2" multiple>
       <option value="1"> 1  </option>
@@ -214,29 +215,30 @@
       <option value="32"> 32  </option>
       <option value="33"> 37  </option>
     </select>
+    
+  </div>
+  <div>
 
+
+      <label>Date de début : <input type="date" name="datebegin"><br>
+
+      <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
+
+      <label>Date de fin : <input type="date" name="dateend"><br>
+
+      <input type="submit"  value="Afficher les statistiques">
   </FORM>
-  <input type="submit"  value="Ajouter la station">
-</div>
-<div>
-  <FORM>
-    <label>Date de début : <input type="date" name="datebegin"><br>
 
-    <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
-
-    <label>Date de fin : <input type="date" name="dateend"><br>
-
-    <input type="submit"  value="Afficher les statistiques">
-
-  </FORM>
 </div>
 
 <h2> Statistiques </h2>
-  <img src="paladin.jpg" border="0" align="center" width=60%></img>
+  <figure>
+  <img src="paladin.jpg" alt="Définissez vos paramètres puis cliquez sur Afficher les statistiques ci-dessus" border="0" align="center" width=60%></img>
   <!-- <div id="reponse">
     <p align="center"></p>
     <img width="70%" src="" />
   </div> -->
+  </figure>
 </section>
 
   <footer class="footer primary-footer">
