@@ -35,8 +35,8 @@ def get_stations():
     query = "SELECT  nom,x,y,identifian FROM `stations`"
     c.execute(query)
     poss = [{'nom':format_stationName(pos[0]),
-             'lat':float(pos[1]),
-             'lon':float(pos[2]),
+             'lat':float(pos[2]),
+             'lon':float(pos[1]),
              'id':int(pos[3])
     }for pos in c.fetchall()]
     # build le dictionnaire
@@ -101,6 +101,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-     print(get_historique(1,"2011-01-01","2011-02-02"))
+     print(get_historique(1,"2009-01-01","2011-12-02")[0][:3])
     # print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
