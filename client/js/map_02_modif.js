@@ -15,7 +15,7 @@
         for ( i = 0; i < data.length; i++ ) {
           d=data[i];
           // liste des positions à marquer [nom,long,lat]'nom','adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid'
-          locations.push([faitexte(d.nom,d.adresse,d.proprietai,d.datemisens,d.datemishor, d.zsol,  d.appartenan, d.identifian, d.gid),data[i].lat,data[i].lon])
+          locations.push([faittexte(d.nom,d.adresse,d.proprietai,d.datemisens,d.datemishor, d.zsol,  d.appartenan, d.identifian, d.gid),data[i].lat,data[i].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
       setTimeout(function(){map(locations);},1000);
@@ -134,6 +134,5 @@
     };
 
     function faittexte(nom,adresse,proprietai,datemisens,datemishor, zsol,  appartenan, identifian, gid){
-      alert('text')
-      return('<div class="infobox"><h3 class="title">'+nom+'</h3><h2 class="title">Identifiant : '+identifian+'</h2><li class="dropdown yamm-fw hasmenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a><ul class="dropdown-menu"><li><div class="yamm-content"><div class="col-md-4"><ul><li>Adresse : '+adresse+'</li><li>Propri&eacute;taire : '+proprietai+'</li><li>Mise en service : '+datemiseens+'</li><li>Fermeture : '+datemishor+'</li><li>Appartenant à : '+appartenan+'</li><li>Gid : '+gid+'</li></ul></div></div></li></ul></li>')
+      return('<div class="infobox"><h2 class="title">'+nom+'</h2><div class="Title">Identifiant : '+identifian+'</div><par class="Title">Informations</par><ul><li>Adresse : '+adresse+'</li><li>Propri&eacute;taire : '+proprietai+'</li><li>Appartenance : '+appartenan+'</li><li>Mise en service : '+datemisens+'</li><li>Mise hors service : '+datemishor+'</li><li>Altitude : '+zsol+' m</li><li>Gid '+gid+'</li></ul></div>')
     }
