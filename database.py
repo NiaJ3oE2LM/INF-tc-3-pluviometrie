@@ -59,11 +59,14 @@ def get_historique(id_station, date_debut, date_fin):
     """
     rende l'historique d'un station la choisissant par son identifiant
     l'historique est limitee par la date de debut et la date de fin
+    liste_idStation ['id_1','id_23']
     anne - mois - jour
     :return: liste des valeus de l'historique
     """
-    a_deb, m_deb, j_deb = date_debut.split('-')
-    a_fin, m_fin, j_fin = date_fin.split('-')
+    a_deb, m_deb, j_deb = date_debut[0].split('-')
+    a_fin, m_fin, j_fin = date_fin[0].split('-')
+
+    id_station = id_station[0].split('_').pop()
     query = "select `date`, `sta-{0}` from `historique` "\
         "where `sta-{0}`!='' " \
         "and substr(`date`,1,2)>='{5}'" \
@@ -76,12 +79,15 @@ def get_historique(id_station, date_debut, date_fin):
     # mise en forme des donnees
     x = []
     y = []
+    lab = []
     for p in c.fetchall():
         t = re.split('-| ', p[0])
-        y.append((float(p[1]), t.pop()))
+        lab.append(t.pop())
+        y.append(float(p[1]))
         t.reverse()
         x.append(tuple(t))
-    return x,y
+    # store restrieved data to dictionary
+    return {id_station: (x,y,lab)}
 
 
 def format_stationName(name):
@@ -101,6 +107,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-     print(get_historique(1,"2009-01-01","2011-12-02")[0][:3])
+     print(get_historique(['id_1', 'id_7', 'id_28'],["2011-01-01"],["2012-02-01"]))
     # print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
