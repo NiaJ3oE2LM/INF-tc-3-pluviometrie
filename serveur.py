@@ -2,7 +2,6 @@ import http.server
 import socketserver
 from urllib.parse import urlparse, parse_qs, unquote
 import json
-import sqlite3
 
 """import local modules"""
 from database import get_stations, get_allinfo_station, get_historique
@@ -110,7 +109,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         date_deb = formdata['datebegin']
         date_fin = formdata['dateend']
         print(date_fin)
-        #ids = formdata.keys().remove('datebegin').remove('Pastps').remove('dateend')
+        ids = formdata.keys().remove('datebegin').remove('Pastps').remove('dateend')
 
 
 
