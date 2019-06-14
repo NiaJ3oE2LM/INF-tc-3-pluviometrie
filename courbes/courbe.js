@@ -45,7 +45,7 @@ var DAYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','1
 				responsive: true,
 				title: {
 					display: true,
-					text: 'Chart.js Line Chart'
+					text: 'Evolution de la pluviométrie dans le Grand Lyon'
 				},
 				tooltips: {
 					mode: 'index',
