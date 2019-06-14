@@ -6,7 +6,7 @@
 
 
 
-var MONTHS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+var MONTHS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 var DAYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29',
    		'30','31'];
 
@@ -20,36 +20,38 @@ var DAYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','1
 // 	donnes = data.get_historique(id,tmin,tmax)
 // }
 // xhr 
+
+var donnees = [(('2012','06','02'),(0.2,'7:44')),(('2012','06','02'),(0.2,'7:44')),(('2012','06','02'),(0.2,'7:44')),(('2012','06','02'),(0.2,'7:44'))];
+var pluv = [0.2,0.1,0.1,0.2,0.0,0.1,0.2,0.7,0.7,0.1,0.1,0.1,0.1,];
  
 		var config = {
 			type: 'line',
 			data: {
 				labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
 				datasets: [{
-					label: 'My First dataset',
+					label: 'test',
 					backgroundColor: window.chartColors.red,
 					borderColor: window.chartColors.red,
 					data: [1,1,1,1,1,1,1],  // on récupère les données
 					fill: false,
-				}, {
-					label: 'My Second dataset',
-					fill: false,
+				},{
+					label: 'identifiant',
 					backgroundColor: window.chartColors.blue,
 					borderColor: window.chartColors.blue,
-					data: [
-						
-					],
-				}]
+					data: pluv,  // on récupère les données
+						fill: false,
+				},
+				]
 			},
 			options: {
 				responsive: true,
 				title: {
 					display: true,
-					text: 'Chart.js Line Chart'
+					text: 'Evolution de la pluviométrie dans le Grand Lyon'
 				},
 				tooltips: {
 					mode: 'index',
-					intersect: false,
+					intersect: true,
 				},
 				hover: {
 					mode: 'nearest',
@@ -60,14 +62,14 @@ var DAYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','1
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Month'
+							labelString: 'Date'
 						}
 					}],
 					yAxes: [{
 						display: true,
 						scaleLabel: {
 							display: true,
-							labelString: 'Value'
+							labelString: 'Hauteur d\'	eau en mm'
 						}
 					}]
 				}
