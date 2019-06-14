@@ -82,15 +82,6 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
 
     def send_stations(self):
-        conn = sqlite3.connect('data/pluvio.sqlite')
-        c = conn.cursor()
-        """
-        return disctionnaire du type {"id-station":(nom_station,pos_x,pos_y)}
-        avec toutes stations du database
-        """
-        # get la nom position et ids de chaque station
-        query = "SELECT  nom,x,y,identifian FROM `stations`"
-        c.execute(query)
         poss=[]
         for d1 in get_stations():
             d2 = get_allinfo_station(d1['id'])
