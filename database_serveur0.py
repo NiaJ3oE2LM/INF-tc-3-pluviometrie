@@ -6,8 +6,12 @@ import sqlite3
 
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # sous-répertoire racine des documents statiques  
-    static_dir = '/client'# on surcharge la méthode qui traite les requêtes GET 
-    def do_GET(self):# on modifie le chemin d'accès en insérant un répertoire préfixe
+    static_dir = '/client'# on surcharge la méthode qui traite les requêtes GET
+
+    def do_GET(self):
+        """
+        on modifie le chemin d'accès en insérant un répertoire préfixe
+        """
         self.init_params()
         if self.path_info[0]=='pluvio':
             self.get_stations()
@@ -20,6 +24,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
   #
   # On envoie le document statique demandé
   #
+
     def send_static(self):
     
         # on modifie le chemin d'accès en insérant un répertoire préfixe
@@ -31,7 +36,8 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             http.server.SimpleHTTPRequestHandler.do_HEAD(self)
         else:
             http.server.SimpleHTTPRequestHandler.do_GET(self)
-    
+
+
     def send(self,body,headers=[]):
 
         # on encode la chaine de caractères à envoyer
@@ -47,6 +53,8 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     
         # on envoie le corps de la réponse
         self.wfile.write(encoded)
+
+
     def init_params(self):
         # analyse de l'adresse
         info = urlparse(self.path)
