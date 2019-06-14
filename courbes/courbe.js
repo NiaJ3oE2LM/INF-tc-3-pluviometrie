@@ -47,7 +47,7 @@ var pluv = [0.2,0.1,0.1,0.2,0.0,0.1,0.2];
 				responsive: true,
 				title: {
 					display: true,
-					text: 'Chart.js Line Chart'
+					text: 'Evolution de la pluviométrie dans le Grand Lyon'
 				},
 				tooltips: {
 					mode: 'index',
