@@ -4,11 +4,33 @@
 // 	return tab_mois
 // }
 
-
-
-var MONTHS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+var YEARS = ['2011','2012','2013','2014','2015','2016','2017','2018']
+var MOIS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+var MONTHS = ['01', '02', '03', '04', '05', '06','07','08','09','10','11','12'];
 var DAYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29',
    		'30','31'];
+var DATE = [];
+
+for (index0 =0; index0 < YEAR.length; ++index0){
+	for(index1 = 0; index1 < MONTHS.length; ++index1){
+		for(index2 = 0; index2< DAYS.length; ++index2){
+			if (MONTH[index1]=='01'){
+				if (DAYS[index2]=='1'){
+			DATE.push(YEARS[index0] +'-'+MOIS[index1]+'-'+DAYS[index2]);
+	}
+				else {
+			DATE.push(YEARS[index0] +'-'+ MONTHS[index1]+'-'+DAYS[index2])
+		}
+	}
+			else if (DAYS[index2]=='1'){
+			DATE.push(MOIS[index1]+'-'+DAYS[index2]);
+	}
+			else {
+				DATE.push(MONTHS[index1]+'-'+DAYS[index2]);
+	}
+}
+}
+}
 
 // var xhr = new XMLHttpRequest();
 // var id = document.getElementById('id_station'),
@@ -20,14 +42,19 @@ var DAYS = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','1
 // 	donnes = data.get_historique(id,tmin,tmax)
 // }
 // xhr 
+var tmin = '2012-06-02',
+	tmax = '2012-06-04'
 
-var donnees = [(('2012','06','02'),(0.2,'7:44')),(('2012','06','02'),(0.2,'7:44')),(('2012','06','02'),(0.2,'7:44')),(('2012','06','02'),(0.2,'7:44'))];
-var pluv = [0.2,0.1,0.1,0.2,0.0,0.1,0.2,0.7,0.7,0.1,0.1,0.1,0.1,];
+var donnees = [(('2012','06','02'),(0.2,'7:32')),(('2012','06','02'),(0.3,'7:38')),(('2012','06','02'),(0.4,'7:50')),(('2012','06','02'),(0.5,'7:56'))];
+var pluv = [0.2,0.1,0.1,0.2,0.0,0.1,0.2,0.7,0.7,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,,,,,,,,,,,,,,,,,0.1,0.1,0.1,0.1,1,1,1,1,1,1,1,1,1];
+
+var blabla = DATE[]
+
  
 		var config = {
 			type: 'line',
 			data: {
-				labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+				labels: DATE,
 				datasets: [{
 					label: 'test',
 					backgroundColor: window.chartColors.red,
@@ -117,3 +144,4 @@ var pluv = [0.2,0.1,0.1,0.2,0.0,0.1,0.2,0.7,0.7,0.1,0.1,0.1,0.1,];
 			config.data.datasets.splice(0, 1);
 			window.myLine.update();
 		});
+
