@@ -96,5 +96,5 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send(s,headers)
     
 
-httpd = socketserver.TCPServer(("", 8080),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
+httpd = socketserver.TCPServer(("", 8001),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
 httpd.serve_forever()
