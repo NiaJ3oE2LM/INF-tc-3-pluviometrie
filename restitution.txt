@@ -1,0 +1,29 @@
+durée : 15 min 
+slides 
++ cdcf
++ particularité du sujet ( toutes les valeurs?, interval de temps très grand ?)
++ montrer un exemple de code ( nouveau buton, lien entre la partie client et la partie serveur)
+DEMONSTRATION
++ cas simple
++ cas complexe: qu'est-ce qu'il se passe pour de données manquantes
++ tout le monde doit parler
+REVIEW AUTRE GROUP 
++ grille d'évaluation (fichier sujet)
++ slide points positives
++ slides points négatives 
+
+en gros:
+-cahier des charges
+-particularité (formats de données etc)
+-bout de code
+-démonstration -> requete simple, requete particulière
+
+-pas de répartition égale mais tout le monde parle
+
+-puis présentation recette (à propos de ce que le groupe a fait)
+-tableau -> grille d'évaluation
+-points positifs /négatifs
+
+-questions
+
+=15 + 5 min /groupe
