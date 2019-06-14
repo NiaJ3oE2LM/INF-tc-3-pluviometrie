@@ -85,8 +85,8 @@ def get_historique(liste_idStation, date_debut, date_fin):
             t.reverse()
             dico = {
                 'x': "-".join(t),
-                'y': float(p[1]),
-                'time': lab
+                'y': float(p[1])
+                #time': lab
             }
             # store restrieved data to dictionary
             histo[id].append(dico)
