@@ -17,6 +17,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):# on modifie le chemin d'accès en insérant un répertoire préfixe
         self.init_params()
+        print(self.path_info)
         if self.path_info[0]=='pluvio':
             self.send_stations()
         else :
@@ -96,5 +97,5 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send(s,headers)
     
 
-httpd = socketserver.TCPServer(("", 8080),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
+httpd = socketserver.TCPServer(("", 8001),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
 httpd.serve_forever()
