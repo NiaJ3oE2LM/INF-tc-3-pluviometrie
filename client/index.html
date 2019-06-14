@@ -183,10 +183,13 @@
 
   <ul>
   <FORM action="/histo" method="get">
-    <p>Identifiants des stations à consulter :</p>
+    <p>Vous pouvez récupérer l'<span style="font-weight : bold">identifiant d'une station</span> en <span style="font-weight : bold">cliquant sur son marqueur sur la carte</span></p>
 
     <div>
       <TABLE  BORDER="0">
+        <TR>
+          <TD colspan=30 align=left><span style="font-weight : bold">Identifiants des stations à consulter :</span>.</TD>
+        </TR>
         <TR>
           <TH> 1 </TH>
           <TH> 2 </TH>
@@ -270,9 +273,9 @@
         <TH> Date de fin </TH>
       </TR>
       <TR>
-        <TD width = "150"> <input type="date" name="datebegin" min="2010-12-31" max="2018-02-01"> </TD>
-        <TD width = "210"> <input type="number" name="Pastps" id="pastps" ></label> </TD>
-        <TD width = "300"> <input type="date" name="dateend" min="2010-12-31" max="2018-02-01"> </TD>
+        <TD width = "150"> <input type="date" name="datebegin" value="2011-01-01" min="2011-01-01" max="2018-02-01"> </TD>
+        <TD width = "210"> <input type="number" name="Pastps" value="6" id="pastps" min="6" ></label> </TD>
+        <TD width = "300"> <input type="date" name="dateend" value="2018-02-01" min="2010-12-31" max="2018-02-01"> </TD>
       </TR>
     </TABLE>
 
@@ -331,6 +334,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAkADq7R0xf6ami9YirAM1N-yl7hdnYBhM "></script>
    <!-- MAP & CONTACT -->
     <script src="js/map_02_modif.js"></script>
+    <script src="js/histo.js"></script>
 
 </body>
 </html>
