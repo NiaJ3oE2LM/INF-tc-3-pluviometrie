@@ -55,7 +55,7 @@ def get_allinfo_station(id_station):
     return dict((keys[i],info[i]) for i in range(8))
 
 
-def get_historique(id_station, date_debut, date_fin):
+def get_historique(liste_idStation, date_debut, date_fin):
     """
     rende l'historique d'un station la choisissant par son identifiant
     l'historique est limitee par la date de debut et la date de fin
@@ -65,29 +65,32 @@ def get_historique(id_station, date_debut, date_fin):
     """
     a_deb, m_deb, j_deb = date_debut[0].split('-')
     a_fin, m_fin, j_fin = date_fin[0].split('-')
-
-    id_station = id_station[0].split('_').pop()
-    query = "select `date`, `sta-{0}` from `historique` "\
-        "where `sta-{0}`!='' " \
-        "and substr(`date`,1,2)>='{5}'" \
-        "and substr(`date`,1,2)<='{6}'" \
-        "and substr(`date`,4,2)>='{1}'"\
-        "and substr(`date`,4,2)<='{2}'"\
-        "and substr(`date`,7,4)>='{3}'"\
-        "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
-    c.execute(query)
-    # mise en forme des donnees
-    x = []
-    y = []
-    lab = []
-    for p in c.fetchall():
-        t = re.split('-| ', p[0])
-        lab.append(t.pop())
-        y.append(float(p[1]))
-        t.reverse()
-        x.append(tuple(t))
-    # store restrieved data to dictionary
-    return {id_station: (x,y,lab)}
+    histo = dict.fromkeys(liste_idStation)
+    for id in liste_idStation:
+        # get id number
+        id_station = id.split('_').pop()
+        query = "select `date`, `sta-{0}` from `historique` "\
+            "where `sta-{0}`!='' " \
+            "and substr(`date`,1,2)>='{5}'" \
+            "and substr(`date`,1,2)<='{6}'" \
+            "and substr(`date`,4,2)>='{1}'"\
+            "and substr(`date`,4,2)<='{2}'"\
+            "and substr(`date`,7,4)>='{3}'"\
+            "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
+        c.execute(query)
+        # mise en forme des donnees
+        x = []
+        y = []
+        lab = []
+        for p in c.fetchall():
+            t = re.split('-| ', p[0])
+            lab.append(t.pop())
+            y.append(float(p[1]))
+            t.reverse()
+            x.append(tuple(t))
+        # store restrieved data to dictionary
+        histo[id] = (x,y,lab)
+    return histo
 
 
 def format_stationName(name):
