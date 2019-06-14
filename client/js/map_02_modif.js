@@ -5,7 +5,7 @@
     (function($) {
       var locations=[];
       var xhr = new XMLHttpRequest();
-      var nom='r';
+      var d='r';
       xhr.open('GET','/pluvio',true);
       xhr.send();
       xhr.onload = function() {   // fonction callback
@@ -13,9 +13,9 @@
   	  var data = JSON.parse(this.responseText);
         // boucle sur les enregistrements renvoyés
         for ( i = 0; i < data.length; i++ ) {
-          nom=data[i].nom;
+          d=data[i];
           // liste des positions à marquer [nom,long,lat]'nom','adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid'
-          locations.push(['<div class="infobox"><h3 class="title">'+nom+'</h3><h2 class="title">Identifiant : '+data[i].ident+'</h2><span>blabla2</span>',data[i].lat,data[i].lon])
+          locations.push([faitexte(d.nom,d.adresse,d.proprietai,d.datemisens,d.datemishor, d.zsol,  d.appartenan, d.identifian, d.gid),data[i].lat,data[i].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
       setTimeout(function(){map(locations);},1000);
@@ -134,22 +134,6 @@
     };
 
     function faittexte(nom,adresse,proprietai,datemisens,datemishor, zsol,  appartenan, identifian, gid){
-      '<div class="infobox"><h3 class="title">'+nom+'</h3><h2 class="title">Identifiant : '+data[i].ident+'</h2>'
-      <li class="dropdown yamm-fw hasmenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a>
-
-      <ul class="dropdown-menu">
-          <li>
-              <div class="yamm-content">
-              <div class="col-md-4">
-              <ul>
-                  <li>Adresse : '+adresse+'</li>
-                  <li>Propri&eacute;taire : '+proprietai+'</a></li>
-                  <li>Mise en service : '+datemiseens+'</li>
-                  <li>Fermeture : '+datemishor+'</li>
-                  <li>Appartenant à : '+appartenan+'</li>
-                  <li>Gid : '+gid+'</li>
-                </ul>
-              </div>
-
+      alert('text')
+      return('<div class="infobox"><h3 class="title">'+nom+'</h3><h2 class="title">Identifiant : '+identifian+'</h2><li class="dropdown yamm-fw hasmenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a><ul class="dropdown-menu"><li><div class="yamm-content"><div class="col-md-4"><ul><li>Adresse : '+adresse+'</li><li>Propri&eacute;taire : '+proprietai+'</li><li>Mise en service : '+datemiseens+'</li><li>Fermeture : '+datemishor+'</li><li>Appartenant à : '+appartenan+'</li><li>Gid : '+gid+'</li></ul></div></div></li></ul></li>')
     }
