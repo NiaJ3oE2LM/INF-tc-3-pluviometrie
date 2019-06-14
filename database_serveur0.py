@@ -82,12 +82,19 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         # get la nom position et ids de chaque station
         query = "SELECT  nom,x,y,identifian FROM `stations`"
         c.execute(query)
-        poss = [{'nom':format_stationName(pos[0]),
-                 'lat':float(pos[2]),
-                 'lon':float(pos[1]),
-                 'id':int(pos[3])
-        }for pos in c.fetchall()]
-        print(poss)
+        poss=[]
+        for pos in c.fetchall():
+            d1={'nom':format_stationName(pos[0]),
+                     'lat':float(pos[2]),
+                     'lon':float(pos[1]),
+                     'id':int(pos[3])
+            }
+            d2=get_allinfo_station(d1['id'])
+            keys=list(d1.keys())+list(d2.keys())
+            values=list(d1.values())+list(d2.values())
+            listkv=[(keys[i],values[i]) for i in range(len(keys))]
+            d={key:value for (key,value) in listkv}
+            poss.append(d)
         # build le dictionnaire
         s=json.dumps(poss)
         headers=[('Content-type','application/json')]
@@ -109,6 +116,19 @@ def format_stationName(name):
         else:
             words.append(w)
     return " ".join(words)
+
+
+def get_allinfo_station(id_station):
+    """
+    return un dictionnaire du type {"info_cle":"info_value"}
+    pour un id_station donné. info_cle suit la nomenclature du sujet
+    """
+    query = "SELECT * FROM info_stations  WHERE identifian = '{}'".format(int(id_station))
+    c.execute(query)
+    info = [x for x in c.fetchone()]
+    keys = ['nom','adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid']
+    return dict((keys[i],info[i]) for i in range(8))
+
     
 
 httpd = socketserver.TCPServer(("", 8080),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
