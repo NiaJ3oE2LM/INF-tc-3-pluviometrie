@@ -6,7 +6,6 @@
       var locations=[];
       var xhr = new XMLHttpRequest();
       var nom='r';
-      var info='r';
       xhr.open('GET','/pluvio',true);
       xhr.send();
       xhr.onload = function() {   // fonction callback
@@ -15,9 +14,8 @@
         // boucle sur les enregistrements renvoyés
         for ( i = 0; i < data.length; i++ ) {
           nom=data[i].nom;
-          info='<div class="infobox"><h3 class="title"><a href="#">'+nom+'</a></h3><span>'+data[i].id'</span><span>blabla2</span>'
           // liste des positions à marquer [nom,long,lat]
-          locations.push([info,data[i].lat,data[i].lon])
+          locations.push(['<div class="infobox"><h3 class="container">'+nom+'</h3><ul class="dropdown-menu">Identifiant : '+data[i].ident+'</ul><span>blabla2</span>',data[i].lat,data[i].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
       setTimeout(function(){map(locations);},1000);
