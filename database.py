@@ -101,6 +101,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-     print(get_historique(1,"2011-01-01","2011-02-02"))
+     print(get_historique(1,"2009-01-01","2011-12-02")[0][:3])
     # print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
