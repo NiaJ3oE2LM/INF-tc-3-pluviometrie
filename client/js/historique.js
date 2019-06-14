@@ -52,7 +52,7 @@ function getHistorique() {
 
         // resp resquest to the server
 
-        
+
 			return
 		}
 

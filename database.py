@@ -65,7 +65,7 @@ def get_historique(liste_idStation, date_debut, date_fin):
     """
     a_deb, m_deb, j_deb = date_debut[0].split('-')
     a_fin, m_fin, j_fin = date_fin[0].split('-')
-    histo = dict.fromkeys(liste_idStation)
+    histo = dict((id,[]) for id in liste_idStation)
     for id in liste_idStation:
         # get id number
         id_station = id.split('_').pop()
@@ -79,17 +79,17 @@ def get_historique(liste_idStation, date_debut, date_fin):
             "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
         c.execute(query)
         # mise en forme des donnees
-        x = []
-        y = []
-        lab = []
         for p in c.fetchall():
             t = re.split('-| ', p[0])
-            lab.append(t.pop())
-            y.append(float(p[1]))
+            lab = t.pop()
             t.reverse()
-            x.append(tuple(t))
-        # store restrieved data to dictionary
-        histo[id] = (x,y,lab)
+            dico = {
+                'x': "-".join(t),
+                'y': float(p[1]),
+                'time': lab
+            }
+            # store restrieved data to dictionary
+            histo[id].append(dico)
     return histo
 
 
