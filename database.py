@@ -76,14 +76,12 @@ def get_historique(id_station, date_debut, date_fin):
     # mise en forme des donnees
     x = []
     y = []
-    lab = []
     for p in c.fetchall():
         t = re.split('-| ', p[0])
-        lab.append(t.pop())
-        y.append(float(p[1]))
-        t.reverse(t.pop())
+        y.append((float(p[1]), t.pop()))
+        t.reverse()
         x.append(tuple(t))
-    return x, y, lab
+    return x,y
 
 
 def format_stationName(name):
