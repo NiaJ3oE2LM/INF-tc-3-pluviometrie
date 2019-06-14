@@ -14,8 +14,8 @@
         // boucle sur les enregistrements renvoyés
         for ( i = 0; i < data.length; i++ ) {
           nom=data[i].nom;
-          // liste des positions à marquer [nom,long,lat]'nom','adresse', 'proprietai', 'datemisens', 'datemishor', 'zsol',  'appartenan', 'identifian', 'gid'
-          locations.push(['<div class="infobox"><h3 class="title">'+nom+'</h3><h2 class="title">Identifiant : '+data[i].ident+'</h2><span>blabla2</span>',data[i].lat,data[i].lon])
+          // liste des positions à marquer [nom,long,lat]
+          locations.push(['<div class="infobox"><h3 class="container">'+nom+'</h3><ul class="dropdown-menu">Identifiant : '+data[i].ident+'</ul><span>blabla2</span>',data[i].lat,data[i].lon])
   	    }//locations=[[nom,lat,long],[],...]
       };
       setTimeout(function(){map(locations);},1000);
@@ -132,24 +132,3 @@
             )(marker, i));
         }
     };
-
-    function faittexte(nom,adresse,proprietai,datemisens,datemishor, zsol,  appartenan, identifian, gid){
-      '<div class="infobox"><h3 class="title">'+nom+'</h3><h2 class="title">Identifiant : '+data[i].ident+'</h2>'
-      <li class="dropdown yamm-fw hasmenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a>
-
-      <ul class="dropdown-menu">
-          <li>
-              <div class="yamm-content">
-              <div class="col-md-4">
-              <ul>
-                  <li>Adresse : '+adresse+'</li>
-                  <li>Propri&eacute;taire : '+proprietai+'</a></li>
-                  <li>Mise en service : '+datemiseens+'</li>
-                  <li>Fermeture : '+datemishor+'</li>
-                  <li>Appartenant à : '+appartenan+'</li>
-                  <li>Gid : '+gid+'</li>
-                </ul>
-              </div>
-
-    }
