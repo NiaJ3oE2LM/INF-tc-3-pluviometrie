@@ -17,7 +17,7 @@ var myChart = new Chart(ctx, {
 				responsive: true,
 				title: {
 					display: true,
-					text: 'Chart.js Time Point Data'
+					text: 'Historique pluviométrie'
 				},
 				scales: {
 					xAxes: [{
