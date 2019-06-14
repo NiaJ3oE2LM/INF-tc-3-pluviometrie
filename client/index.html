@@ -177,68 +177,114 @@
 
 
 <section class="section ldp">
-
+<ul>
 <div>
   <h2> Choix des paramètres </h2>
 
-  <FORM> Identifiant des stations à consulter : (maintenir ctrl pour sélectionner plusieurs stations simultanément)
-    <select name="id_station" size="2" multiple>
-      <option value="1"> 1  </option>
-      <option value="2"> 2  </option>
-      <option value="3"> 3  </option>
-      <option value="4"> 4  </option>
-      <option value="5"> 5  </option>
-      <option value="6"> 6  </option>
-      <option value="7"> 7  </option>
-      <option value="8"> 8  </option>
-      <option value="9"> 9  </option>
-      <option value="10"> 10  </option>
-      <option value="11"> 11  </option>
-      <option value="12"> 12  </option>
-      <option value="13"> 13  </option>
-      <option value="14"> 14  </option>
-      <option value="15"> 15  </option>
-      <option value="16"> 16  </option>
-      <option value="17"> 17  </option>
-      <option value="18"> 18  </option>
-      <option value="19"> 19  </option>
-      <option value="21"> 21  </option>
-      <option value="23"> 23  </option>
-      <option value="24"> 24  </option>
-      <option value="25"> 25  </option>
-      <option value="26"> 26  </option>
-      <option value="27"> 27  </option>
-      <option value="28"> 28  </option>
-      <option value="29"> 29  </option>
-      <option value="30"> 30  </option>
-      <option value="31"> 31  </option>
-      <option value="32"> 32  </option>
-      <option value="33"> 37  </option>
-    </select>
+  <ul>
+  <FORM>
+    <p>Identifiants des stations à consulter :</p>
+
+    <div>
+      <TABLE  BORDER="0">
+        <TR>
+          <TH> 1 </TH>
+          <TH> 2 </TH>
+          <TH> 3 </TH>
+          <TH> 4 </TH>
+          <TH> 5 </TH>
+          <TH> 6 </TH>
+          <TH> 7 </TH>
+          <TH> 8 </TH>
+          <TH> 9 </TH>
+          <TH> 10 </TH>
+          <TH> 11 </TH>
+          <TH> 12 </TH>
+          <TH> 13 </TH>
+          <TH> 14 </TH>
+          <TH> 15 </TH>
+          <TH> 16 </TH>
+          <TH> 17 </TH>
+          <TH> 18 </TH>
+          <TH> 19 </TH>
+          <TH> 21 </TH>
+          <TH> 23 </TH>
+          <TH> 24 </TH>
+          <TH> 25 </TH>
+          <TH> 26 </TH>
+          <TH> 27 </TH>
+          <TH> 28 </TH>
+          <TH> 29 </TH>
+          <TH> 30 </TH>
+          <TH> 31 </TH>
+          <TH> 32 </TH>
+          <TH> 37 </TH>
+        </TR>
+        <TR>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_1"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_2"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_3"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_4"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_5"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_6"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_7"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_8"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_9"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_10"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_11"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_12"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_13"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_14"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_15"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_16"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_17"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_18"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_19"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_21"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_23"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_24"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_25"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_26"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_27"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_28"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_29"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_30"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_31"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_32"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_37"> </TD>
+
+        </TR>
+      </TABLE>
+
+
+    </div>
 
   </div>
   <div>
 
+  <ul>
+    <TABLE  BORDER="0">
+      <TR>
+        <TH> Date de début </TH>
+        <TH> Pas de temps (en minutes) </TH>
+        <TH> Date de fin </TH>
+      </TR>
+      <TR>
+        <TD width = "150"> <input type="date" name="datebegin" min="2010-12-31" max="2018-02-01"> </TD>
+        <TD width = "210"> <input type="number" name="Pastps" id="pastps" ></label> </TD>
+        <TD width = "300"> <input type="date" name="dateend" min="2010-12-31" max="2018-02-01"> </TD>
+      </TR>
+    </TABLE>
 
-      <label>Date de début : <input type="date" name="datebegin"><br>
-
-      <label>Pas de temps (en minutes) : <input name="Pastps" id="pastps"></label><br>
-
-      <label>Date de fin : <input type="date" name="dateend"><br>
-
-      <input type="submit"  value="Afficher les statistiques">
+    <br>
+    <input type="submit" value="Afficher les statistiques">
+  </ul>
   </FORM>
 
 </div>
 
-<h2> Statistiques </h2>
-  <figure>
-  <img src="paladin.jpg" alt="Définissez vos paramètres puis cliquez sur Afficher les statistiques ci-dessus" border="0" align="center" width=60%></img>
-  <!-- <div id="reponse">
-    <p align="center"></p>
-    <img width="70%" src="" />
-  </div> -->
-  </figure>
+<h2> Résultats </h2>
+</ul>
 </section>
 
   <footer class="footer primary-footer">
