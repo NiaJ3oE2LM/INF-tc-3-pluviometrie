@@ -35,8 +35,8 @@ def get_stations():
     query = "SELECT  nom,x,y,identifian FROM `stations`"
     c.execute(query)
     poss = [{'nom':format_stationName(pos[0]),
-             'lat':float(pos[1]),
-             'lon':float(pos[2]),
+             'lat':float(pos[2]),
+             'lon':float(pos[1]),
              'id':int(pos[3])
     }for pos in c.fetchall()]
     # build le dictionnaire
