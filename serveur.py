@@ -108,8 +108,9 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         """
         date_deb = formdata['datebegin']
         date_fin = formdata['dateend']
-        print(date_fin)
-        ids = formdata.keys().remove('datebegin').remove('Pastps').remove('dateend')
+        ids = formdata.keys()
+        [ids.remove(x) for x in ('datebegin','Pastps','dateend')]
+        print(ids)
 
 
 
