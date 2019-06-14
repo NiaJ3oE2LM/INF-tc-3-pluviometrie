@@ -84,7 +84,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     def send_stations(self):
         poss=[]
         for d1 in get_stations():
-            d2 = get_allinfo_station(d1['ident'])
+            d2 = get_allinfo_station(d1['id'])
             keys = list(d1.keys()) + list(d2.keys())
             values = list(d1.values()) + list(d2.values())
             listkv = [(keys[i],values[i]) for i in range(len(keys))]

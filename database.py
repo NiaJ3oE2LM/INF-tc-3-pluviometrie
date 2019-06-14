@@ -37,7 +37,7 @@ def get_stations():
     poss = [{'nom':format_stationName(pos[0]),
              'lat':float(pos[2]),
              'lon':float(pos[1]),
-             'ident':int(pos[3])
+             'id':int(pos[3])
     }for pos in c.fetchall()]
     # build le dictionnaire
     return poss
