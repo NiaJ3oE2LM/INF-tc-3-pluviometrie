@@ -15,11 +15,18 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # sous-répertoire racine des documents statiques  
     static_dir = '/client'# on surcharge la méthode qui traite les requêtes GET
 
-    def do_GET(self):# on modifie le chemin d'accès en insérant un répertoire préfixe
-        self.init_params()
-        print(self.path_info)
+    def do_GET(self):
+        """
+        on modifie le chemin d'accès en insérant un répertoire préfixe
+        """
+
+        self.init_params() # lecture des requetes
+
+        # selection entre carte et historique
         if self.path_info[0]=='pluvio':
             self.send_stations()
+        if self.path_info[0] == 'histo':
+            self.sed_historique(self.params)
         else :
             self.send_static()
         #http.server.SimpleHTTPRequestHandler.do_GET(self)
@@ -41,6 +48,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             http.server.SimpleHTTPRequestHandler.do_HEAD(self)
         else:
             http.server.SimpleHTTPRequestHandler.do_GET(self)
+
 
     def send(self,body,headers=[]):
 
@@ -95,7 +103,10 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         s=json.dumps(poss)
         headers=[('Content-type','application/json')]
         self.send(s,headers)
-    
+
+
+    def send_historique(self, formdata):
+        pass
 
 httpd = socketserver.TCPServer(("", 8001),RequestHandler)# on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
 httpd.serve_forever()
