@@ -65,7 +65,7 @@ def get_historique(liste_idStation, date_debut, date_fin):
     """
     a_deb, m_deb, j_deb = date_debut[0].split('-')
     a_fin, m_fin, j_fin = date_fin[0].split('-')
-    histo = dict((id,[]) for id in liste_idStation)
+    datasets = list()
     for id in liste_idStation:
         # get id number
         id_station = id.split('_').pop()
@@ -78,19 +78,20 @@ def get_historique(liste_idStation, date_debut, date_fin):
             "and substr(`date`,7,4)>='{3}'"\
             "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
         c.execute(query)
-        # mise en forme des donnees
-        for p in c.fetchall():
-            t = re.split('-| ', p[0])
-            lab = t.pop()
-            t.reverse()
-            dico = {
-                'x': "-".join(t),
-                'y': float(p[1])
-                #time': lab
+        # mise en forme des donnees pour Chart.js (graphique)
+        dataset = {
+                'label': id,
+                'data': list()
             }
-            # store restrieved data to dictionary
-            histo[id].append(dico)
-    return histo
+        for p in c.fetchall():
+            # format datetime in Chart.js
+            dataset['data'].append({
+                'x': p[0],
+                'y': float(p[1])
+                })
+            # pile dataset in datasets
+        datasets.append(dataset)
+    return datasets
 
 
 def format_stationName(name):
@@ -110,6 +111,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-     print(get_historique(['id_1', 'id_7', 'id_28'],["2011-01-01"],["2012-02-01"]))
+     print(get_historique(['id_1'],["2011-01-01"],["2018-02-01"]))
     # print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
