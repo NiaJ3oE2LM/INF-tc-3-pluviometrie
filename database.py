@@ -55,33 +55,43 @@ def get_allinfo_station(id_station):
     return dict((keys[i],info[i]) for i in range(8))
 
 
-def get_historique(id_station, date_debut, date_fin):
+def get_historique(liste_idStation, date_debut, date_fin):
     """
     rende l'historique d'un station la choisissant par son identifiant
     l'historique est limitee par la date de debut et la date de fin
+    liste_idStation ['id_1','id_23']
     anne - mois - jour
     :return: liste des valeus de l'historique
     """
-    a_deb, m_deb, j_deb = date_debut.split('-')
-    a_fin, m_fin, j_fin = date_fin.split('-')
-    query = "select `date`, `sta-{0}` from `historique` "\
-        "where `sta-{0}`!='' " \
-        "and substr(`date`,1,2)>='{5}'" \
-        "and substr(`date`,1,2)<='{6}'" \
-        "and substr(`date`,4,2)>='{1}'"\
-        "and substr(`date`,4,2)<='{2}'"\
-        "and substr(`date`,7,4)>='{3}'"\
-        "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
-    c.execute(query)
-    # mise en forme des donnees
-    x = []
-    y = []
-    for p in c.fetchall():
-        t = re.split('-| ', p[0])
-        y.append((float(p[1]), t.pop()))
-        t.reverse()
-        x.append(tuple(t))
-    return x,y
+    a_deb, m_deb, j_deb = date_debut[0].split('-')
+    a_fin, m_fin, j_fin = date_fin[0].split('-')
+    datasets = list()
+    for id in liste_idStation:
+        # get id number
+        id_station = id.split('_').pop()
+        query = "select `date`, `sta-{0}` from `historique` "\
+            "where `sta-{0}`!='' " \
+            "and substr(`date`,1,2)>='{5}'" \
+            "and substr(`date`,1,2)<='{6}'" \
+            "and substr(`date`,4,2)>='{1}'"\
+            "and substr(`date`,4,2)<='{2}'"\
+            "and substr(`date`,7,4)>='{3}'"\
+            "and substr(`date`,7,4)<='{4}'".format(id_station, m_deb, m_fin, a_deb, a_fin, j_deb, j_fin)
+        c.execute(query)
+        # mise en forme des donnees pour Chart.js (graphique)
+        dataset = {
+                'label': id,
+                'data': list()
+            }
+        for p in c.fetchall():
+            # format datetime in Chart.js
+            dataset['data'].append({
+                'x': p[0],
+                'y': float(p[1])
+                })
+            # pile dataset in datasets
+        datasets.append(dataset)
+    return datasets
 
 
 def format_stationName(name):
@@ -101,6 +111,6 @@ def format_stationName(name):
     return " ".join(words)
 
 if __name__ == '__main__':
-     print(get_historique(1,"2009-01-01","2011-12-02")[0][:3])
+     print(get_historique(['id_1'],["2011-01-01"],["2018-02-01"]))
     # print(get_stations())
     # print(format_stationName("CHAMPAGNE AU MONT D OR"))
