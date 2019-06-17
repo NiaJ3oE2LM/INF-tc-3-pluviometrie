@@ -1,0 +1,286 @@
+<!doctype html>
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js " lang="fr"> <!--<![endif]-->
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Site Meta -->
+    <title>Pluviom&eacute;trie</title>
+    <meta name="keywords" content="pluviom&eacute;trie","Lyon">
+    <meta name="description" content="Pluviom&eacute;trie du Grand Lyon">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+	<!-- Google Fonts -->
+ 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700" rel="stylesheet">
+
+	<!-- Custom & Default Styles -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="style.css">
+
+
+    <!--Chart.js affichage historique-->
+    <script src="js/moment.min.js"></script>
+	<script src="js/Chart.min.js"></script>
+
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 hidden-xs">
+                        <nav class="topbar-menu">
+                            <ul class="list-inline">
+                            	<li>Suivez-nous ! : </li>
+                                <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/messages/t/2196438403776098"><i class="fa fa-facebook"></i></a></li>
+                                                            </ul><!-- end list -->
+                        </nav><!-- end menu -->
+                    </div><!-- end col -->
+
+                    <div class="col-md-6 col-sm-6">
+                        <nav class="topbar-menu">
+                            <ul class="list-inline text-right navbar-right">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="images/GB.png" alt=""> Fran&#231;ais
+                                    <span class="fa fa-angle-down"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><img src="images/FR.png" alt=""> Fran&#231;ais </a></li>
+                                        <!--<li><a href="#"><img src="images/ES.png" alt=""> Espa&#241;ol</a></li>
+                                        <li><a href="#"><img src="images/IT.png" alt=""> Italiano</a></li>
+                                        <li><a href="#"><img src="images/DE.png" alt=""> Deustch</a></li>-->
+                                    </ul>
+                                </li>
+                                <li class="hidden-xs"><i class="fa fa-clock-o"></i> 24/24</li>
+                                <li><i class="fa fa-phone"></i> +33 4 72 18 60 00</li>
+                            </ul><!-- end list -->
+                        </nav><!-- end menu -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end topbar -->
+
+		<header class="header site-header">
+			<div class="container">
+				<nav class="navbar navbar-default yamm">
+				    <div class="container-fluid">
+				        <div class="navbar-header">
+				            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				                <span class="sr-only">Toggle navigation</span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				            </button>
+							<a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+				        </div>
+    <!--pour le menu c'est en-dessous-->
+
+
+				    </div><!--/.container-fluid -->
+				</nav><!-- end nav -->
+			</div><!-- end container -->
+		</header><!-- end header -->
+
+		<section class="section normalhead">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+						<h2>Welcome !</h2>
+						<p class="lead"> The only website where you can find ALL pluviometry in the Grand Lyon !</p>
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end container -->
+		</section><!-- end section -->
+
+
+				<div class="row">
+					<div class="col-md-12 mb30">
+						<div class="mapv2">
+						<div id="map"></div>
+						</div>
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end container -->
+		</section><!-- end section -->
+
+
+<section class="section ldp">
+<ul>
+<div>
+  <h2> Choice of parameters </h2>
+
+  <ul>
+  <FORM id="selectionAffichage" >
+    <p> Ypu can find the <span style="font-weight:bold">stations identifications</span> by <span style="font-weight:bold"> clicking on the markers on the map.</span>.</p>
+
+    <div>
+      <TABLE  BORDER="0">
+        <TR>
+          <span style="font-weight:bold"> Stations to show</span>
+        </TR>
+        <TR>
+          <TH> 1 </TH>
+          <TH> 2 </TH>
+          <TH> 3 </TH>
+          <TH> 4 </TH>
+          <TH> 5 </TH>
+          <TH> 6 </TH>
+          <TH> 7 </TH>
+          <TH> 8 </TH>
+          <TH> 9 </TH>
+          <TH> 10 </TH>
+          <TH> 11 </TH>
+          <TH> 12 </TH>
+          <TH> 13 </TH>
+          <TH> 14 </TH>
+          <TH> 15 </TH>
+          <TH> 16 </TH>
+          <TH> 17 </TH>
+          <TH> 18 </TH>
+          <TH> 19 </TH>
+          <TH> 21 </TH>
+          <TH> 23 </TH>
+          <TH> 24 </TH>
+          <TH> 25 </TH>
+          <TH> 26 </TH>
+          <TH> 27 </TH>
+          <TH> 28 </TH>
+          <TH> 29 </TH>
+          <TH> 30 </TH>
+          <TH> 31 </TH>
+          <TH> 32 </TH>
+          <TH> 37 </TH>
+        </TR>
+        <TR>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_1"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_2"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_3"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_4"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_5"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_6"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_7"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_8"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_9"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_10"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_11"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_12"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_13"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_14"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_15"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_16"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_17"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_18"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_19"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_21"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_23"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_24"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_25"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_26"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_27"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_28"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_29"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_30"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_31"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_32"> </TD>
+          <TD WIDTH = "35"> <input type="checkbox" name="id_37"> </TD>
+
+        </TR>
+      </TABLE>
+
+
+    </div>
+
+  </div>
+  <div>
+
+  <ul>
+    <TABLE  BORDER="0">
+      <TR>
+        <TH> Begin time </TH>
+        <TH> Step time </TH>
+        <TH> End time </TH>
+      </TR>
+      <TR>
+        <TD width = "150"> <input id="datebegin" type="date" name="datebegin" value="2011-01-01" min="2011-01-01" max="2018-02-01"> </TD>
+        <TD width = "210"> <input id="pastps" type="number" name="Pastps" value="6" min="6"></label> </TD>
+        <TD width = "300"> <input id="dateend" type="date" name="dateend" value="2018-02-01" min="2011-01-01" max="2018-02-01"> </TD>
+      </TR>
+    </TABLE>
+
+    <br>
+    <input id="updateData" type="button" value="Show statistics">
+  </ul>
+  </FORM>
+
+</div>
+
+<h2> Results </h2>
+    <canvas id="myChart" style="display: block; height: 500px;"></canvas>
+
+
+</ul>
+</section>
+
+  <footer class="footer primary-footer">
+    <div class="container">
+      <div class="row contactv2 text-center">
+        <div class="col-md-4">
+          <div class="small-box">
+            <i class="flaticon-message"></i>
+            <h4>Contact us</h4>
+            <small>Phone: +33 4 72 18 60 00</small>
+            <small>Fax:  +33 4 72 18 60 00</small>
+            <p><a href="mail:to">michele.schio@ecl18.ec-lyon.fr</a></p>
+          </div><!-- end small-box -->
+        </div><!-- end col -->
+
+        <div class="col-md-4">
+          <div class="small-box">
+            <i class="flaticon-home-marker"></i>
+            <h4>Where are we from ?</h4>
+            <h5>Ecole Centrale de Lyon</h5>
+            <small>36 avenue Guy de Collongue</small>
+            <small>69130 Ecully, France</small>
+            <p><a target="_blank" rel="noopener noreferrer" href="https://www.google.fr/maps/place/36+Avenue+Guy+de+Collongue,+69130+%C3%89cully/@45.7827328,4.767355,14z/data=!4m5!3m4!1s0x47f4ec94dd22ae37:0xda95420287666608!8m2!3d45.7827291!4d4.7695437?hl=fr">C'est où ?</a></p>
+          </div><!-- end small-box -->
+        </div><!-- end col -->
+
+        <div class="col-md-4">
+          <div class="small-box">
+            <i class="flaticon-user"></i>
+            <h4>On social networks</h4>
+            <small>Twitter : we don't have</small>
+            <p><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/messages/t/2196438403776098">Messenger</a></p>
+          </div><!-- end small-box -->
+        </div><!-- end col -->
+      </div><!-- end contactv2 -->
+    </div>
+</footer>
+	<!-- jQuery Files -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/parallax.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAkADq7R0xf6ami9YirAM1N-yl7hdnYBhM "></script>
+   <!-- MAP & CONTACT -->
+    <script src="js/map_02_modif.js"></script>
+    <!--Chart.js affichage historique-->
+    <script src="js/historique.js"></script>
+
+</body>
+</html>
