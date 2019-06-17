@@ -23,7 +23,7 @@ var config = {
 				scales: {
 					xAxes: [{
                         type: 'time',
-                        autoSkip: true, // autoscale x axis
+                        autoSkip: true, // ajustement axe x
 						scaleLabel: {
 							display: true,
 							labelString: 'Date'
@@ -32,7 +32,7 @@ var config = {
 					yAxes: [{
 					    type: 'linear',
 						display: true,
-						autoSkip: true, // autoscale y axis
+						autoSkip: true, // ajustement axe y
 						scaleLabel: {
 							display: true,
 							labelString: 'Hauteur de pluie mesurée en mm'
@@ -87,7 +87,7 @@ document.getElementById('updateData').addEventListener('click', function() {
 });
 
 
-// refresh chart with new data from the database
+// rafraichir le graphique avec de nouvelles données de la base de données
 var timeFormat = 'MM-DD-YYYY HH:mm';
 
 function refreshChart(newDatasets) {
@@ -101,28 +101,29 @@ function refreshChart(newDatasets) {
         dataset.backgroundColor = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.4)';
         dataset.borderColor = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 1)';
         dataset.fill = true;
-        // straight line
+
         dataset.lineTension = 0;
 
 
-        // update date with moment.js
+        // mise à jour des dates avec moment.js
         dataset.data.forEach(function(point, pi){
             dataset.data[pi].x = moment(point.x, timeFormat).format();
         });
     });
 
-    // update chart datasets config
+    // mise à jour des données du graphe
     config.data.datasets = newDatasets;
     console.log(config.data.datasets)
 
-    // update chart window with the new config
+    // mise à jour de la fenetre du graphe
     window.myChart.update();
 };
 
 
-// random color function
+
+// couleur random
 function randomRGB(){
-    // random int function from MDN
+
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
     }
