@@ -108,17 +108,14 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         """
         date_deb = formdata['datebegin']
         date_fin = formdata['dateend']
-        # create id list
-        ids = list(formdata.keys())
-        [ids.remove(x) for x in ('datebegin','Pastps','dateend')]
-        s = json.dumps(get_historique(ids, date_deb, date_fin))
-        headers = [('Content-type', 'application/json')]
-        self.send(s, headers)
+        print(date_fin)
+        ids = formdata.keys().remove('datebegin').remove('Pastps').remove('dateend')
+
 
 
 """ Demarrage du serveur
 on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
 """
 
-httpd = socketserver.TCPServer(("", 8001),RequestHandler)
+httpd = socketserver.TCPServer(("", 8002),RequestHandler)
 httpd.serve_forever()
