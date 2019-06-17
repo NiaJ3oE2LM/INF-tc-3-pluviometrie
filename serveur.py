@@ -13,7 +13,7 @@ http://localhost:8001/?id_3=on&id_13=on&id_17=on&id_18=on&datebegin=2017-04-05&P
 
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # sous-répertoire racine des documents statiques
-    static_dir = '/client'  # on surcharge la méthode qui traite les requêtes GET
+    static_dir = '/client_fr'  # on surcharge la méthode qui traite les requêtes GET
 
 
     def do_GET(self):
@@ -26,6 +26,12 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_stations()
         if self.path_info[0] == 'histo':
             self.send_historique(self.params)
+        if self.path_info[0] == 'en':
+            self.static_dir='/client_en'
+            self.send_static()
+        if self.path_info[0] == 'fr':
+            self.static_dir='/client_fr'
+            self.send_static()
         else:
             self.send_static()
         # http.server.SimpleHTTPRequestHandler.do_GET(self)
@@ -46,6 +52,8 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             http.server.SimpleHTTPRequestHandler.do_HEAD(self)
         else:
             http.server.SimpleHTTPRequestHandler.do_GET(self)
+            
+            
 
 
     def send(self, body, headers=[]):
