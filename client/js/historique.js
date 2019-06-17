@@ -1,13 +1,13 @@
-// get the canvas
+// récupération de canvas
 var ctx = document.getElementById('myChart');
 
 
-// configuration variable to later create the plot
+// initialisation
 var config = {
     type: 'line',
     data: {
         datasets: [{
-            label: 'sta-1',
+            label: 'pluie',
             data:[{x: moment("2011-01-01"),y: 0},
                    {x: moment("2018-01-02"),y: 0},
                  ]
@@ -15,6 +15,7 @@ var config = {
     },
     options: {
 				responsive: true,
+        zoomEnabled : true,
 				title: {
 					display: true,
 					text: 'Historique pluviométrie'
@@ -37,7 +38,7 @@ var config = {
 							labelString: 'Hauteur de pluie mesurée en mm'
 						},
 						ticks:{
-						    beginAtZero: true
+              beginAtZero: true
 						}
 					}]
 				}
@@ -45,14 +46,14 @@ var config = {
 		};
 
 
-// load the plot the first time
+// chargement initial
 window.onload = function() {
     var ctx = document.getElementById('myChart');
     window.myChart = new Chart(ctx, config);
 };
 
 
-// encode formData object for easier backend processing
+// encodage pour faciliter le traitement
 function urlencodeFormData(fd){
     var s = '';
     function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
@@ -65,20 +66,20 @@ function urlencodeFormData(fd){
 };
 
 
-// update the graph with the "affichage historique" button
+// actualisation avec le bouton "affichage historique"
 document.getElementById('updateData').addEventListener('click', function() {
     if (config.data.datasets.length > 0) {
 
-        // get data from the formsection
+        // récupération données du formulaire
         var formElement = document.getElementById("selectionAffichage");
 
-        // resp resquest to the server --> pareille que dans carte
+        // appel au serveur (cf aussi map_02_modif)
         var request = new XMLHttpRequest();
         request.open("GET", "/histo"+urlencodeFormData(new FormData(formElement)), true);
 
-        // update data on the graph config wuth the answer
+        // actualisation données du graphique
         request.onload=function() {
-            newDatasets = JSON.parse(this.response);
+            newDatasets = JSON.parse(this.responseText);
             refreshChart(newDatasets);
         };
         request.send()
@@ -92,9 +93,10 @@ var timeFormat = 'MM-DD-YYYY HH:mm';
 function refreshChart(newDatasets) {
 
     // mise en forme des dates
-    newDatasets.forEach(function(dataset,di){
+    newDatasets.forEach(function(dataset,pi){
 
         // ajoute des couleurs
+
         rgb = randomRGB();
         dataset.backgroundColor = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.4)';
         dataset.borderColor = 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 1)';
@@ -114,6 +116,7 @@ function refreshChart(newDatasets) {
     console.log(config.data.datasets)
 
     // update chart window with the new config
+    window.myChart.data.datasets[0].label='pluie (mm)';
     window.myChart.update();
 };
 
