@@ -116,6 +116,7 @@ function refreshChart(newDatasets) {
     console.log(config.data.datasets)
 
     // update chart window with the new config
+    window.myChart.data.datasets[0].label='pluie (mm)';
     window.myChart.update();
 };
 
