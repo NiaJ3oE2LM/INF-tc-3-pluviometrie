@@ -2,10 +2,9 @@ import http.server
 import socketserver
 from urllib.parse import urlparse, parse_qs, unquote
 import json
-import sqlite3
 
 """import local modules"""
-from database import get_stations, get_allinfo_station
+from database import get_stations, get_allinfo_station, get_historique
 
 """ structure lien historique 
 http://localhost:8001/?id_3=on&id_13=on&id_17=on&id_18=on&datebegin=2017-04-05&Pastps=12&dateend=2018-01-17
@@ -15,6 +14,7 @@ http://localhost:8001/?id_3=on&id_13=on&id_17=on&id_18=on&datebegin=2017-04-05&P
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
     # sous-répertoire racine des documents statiques
     static_dir = '/client'  # on surcharge la méthode qui traite les requêtes GET
+
 
     def do_GET(self):
         """
@@ -47,6 +47,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         else:
             http.server.SimpleHTTPRequestHandler.do_GET(self)
 
+
     def send(self, body, headers=[]):
         # on encode la chaine de caractères à envoyer
         encoded = bytes(body, 'UTF-8')
@@ -61,6 +62,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
         # on envoie le corps de la réponse
         self.wfile.write(encoded)
+
 
     def init_params(self):
         # analyse de l'adresse
@@ -84,6 +86,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         print('body =', length, ctype, self.body)
         print('params =', self.params)
 
+
     def send_stations(self):
         poss = []
         for d1 in get_stations():
@@ -98,10 +101,24 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
         headers = [('Content-type', 'application/json')]
         self.send(s, headers)
 
+
     def send_historique(self, formdata):
-        """"""
-        pass
+        """lecture des choix du form et renvoi des donnée de
+        {'id_11': ['on'], 'id_16': ['on'], 'Pastps': ['6'], 'datebegin': ['2011-01-02'], 'id_6': ['on'], 'dateend': ['2018-02-01']}
+        """
+        date_deb = formdata['datebegin']
+        date_fin = formdata['dateend']
+        # create id list
+        ids = list(formdata.keys())
+        [ids.remove(x) for x in ('datebegin','Pastps','dateend')]
+        s = json.dumps(get_historique(ids, date_deb, date_fin))
+        headers = [('Content-type', 'application/json')]
+        self.send(s, headers)
 
 
-httpd = socketserver.TCPServer(("", 8001),RequestHandler)  # on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
+""" Demarrage du serveur
+on démarre le serveur, qui se lance dans une boucle infinie# en l'attente de requêtes provenant de clients éventuels...
+"""
+
+httpd = socketserver.TCPServer(("", 8001),RequestHandler)
 httpd.serve_forever()
