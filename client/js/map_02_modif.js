@@ -134,5 +134,5 @@
     };
 
     function faittexte(nom,adresse,proprietai,datemisens,datemishor, zsol,  appartenan, identifian, gid){
-      return('<div class="infobox"><h2 class="title">'+nom+'</h2><div class="Title">Identifiant : '+identifian+'</div><par class="Title">Informations</par><ul><li>Adresse : '+adresse+'</li><li>Propri&eacute;taire : '+proprietai+'</li><li>Appartenance : '+appartenan+'</li><li>Mise en service : '+datemisens+'</li><li>Mise hors service : '+datemishor+'</li><li>Altitude : '+zsol+' m</li><li>Gid '+gid+'</li></ul></div>')
+      return('<div class="infobox"><h2 class="title">'+nom+'</h2><div class="Title">Identifiant : '+identifian+'</div><par class="Title">Informations</par><ul><li>Adresse : '+adresse+'</li><li>Propri&eacute;taire : '+proprietai+'</li><li>Mise en service : '+datemisens+'</li><li>Mise hors service : '+datemishor+'</li><li>Altitude : '+zsol+' m</li></ul></div>')
     }
